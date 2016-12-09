@@ -1,24 +1,23 @@
-import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import thunkMiddleware from 'redux-thunk'
-//import todoApp from './reducers'
-//import App from './components/App.js'
+import { Router, Route, browserHistory,IndexRoute } from 'react-router' //v3.0.0
 
-//let store = createStore(todoApp,
-//    applyMiddleware(thunkMiddleware)
-//)
-//把 root reducer 塞入 createStore()，建立store
-//用redux提供的applyMiddleware()，加上redux-thunk的thunkMiddleware
+import store from './redux/store/config.js'
+import App from './components/App.js'
+import Home from './components/Home/Home.js'
+import Zoo from './components/Zoo/Zoo.js'
 
 render(
-  <Provider store={store}>
-  </Provider>,
-  document.getElementById('root')
+    <Provider store={store}>
+      <Router history={browserHistory}>
+        <Route path="/" component={App}>
+          <IndexRoute component={Home}/>
+          <Route path="zoo" component={Zoo}/>
+        </Route>
+      </Router>
+    </Provider>,
+    document.getElementById('root')
 )
 
-//進入點
-
-//<Provider/> 在root component 用來傳遞store，只要使用一次，之後的component就都可以使用store，很方便!
+//browserHistory

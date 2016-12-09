@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Redux Todos example</title>
+    <title>React_Redux_Relay example</title>
   </head>
   <body>
     <div id="root">
