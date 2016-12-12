@@ -1,4 +1,4 @@
-const activityInfo = (state = {description:""}, action) => {
+const activityInfo = (state = [], action) => {
     switch (action.type) {
         case 'SET_ACTIVITY_INFO':
             return action.text
@@ -8,8 +8,6 @@ const activityInfo = (state = {description:""}, action) => {
 }
 
 export default activityInfo
-
-//得到MOD看奧運打卡拿大獎活動描述
 
 
 

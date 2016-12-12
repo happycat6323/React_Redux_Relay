@@ -10,7 +10,7 @@ export default class Home extends React.Component {
 
     render() {
         return (
-            <div>
+            <div style={{margin: "80px"}}>
                 <h1>hello world</h1>
                 <ActivityInfo />
             </div>

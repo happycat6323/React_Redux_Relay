@@ -6,7 +6,7 @@ import '../public/css/main.css'
 
 export default class App extends React.Component {
     handleSelect(){
-        this.context.router.push('zoo')
+        this.context.router.push('Subpage')
     }
 
     render(){
@@ -19,7 +19,7 @@ export default class App extends React.Component {
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
-                        <NavItem eventKey={1} onClick={this.handleSelect.bind(this)}>Zoo</NavItem>
+                        <NavItem eventKey={1} onClick={this.handleSelect.bind(this)}>Subpage</NavItem>
                     </Nav>
                 </Navbar>
                 {this.props.children}
