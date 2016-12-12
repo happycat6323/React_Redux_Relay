@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Subpage from '../components/Subpage/Subpages.js'
+import Subpage from '../components/Subpages/Subpages.js'
 
 const mapStateToProps = (state, ownProps) => {
     return {
