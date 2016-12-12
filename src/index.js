@@ -9,7 +9,7 @@ import { Router, Route, browserHistory,IndexRoute } from 'react-router' //v3.0.0
 import store from './redux/store/config.js'
 import App from './components/App.js'
 import Home from './components/Home/Home.js'
-import Subpage from './containers/Subpage.js'
+import Subpage from './containers/Subpages.js'
 
 render(
     <Provider store={store}>
