@@ -1,5 +1,5 @@
 {
-  "name": "redux-todos-example",
+  "name": "react-redux-relay-example",
   "version": "0.0.0",
   "dependencies": {
     "babel-polyfill": "^6.3.14",

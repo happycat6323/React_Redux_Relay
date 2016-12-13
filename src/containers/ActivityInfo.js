@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import {getActivityInfo} from '../redux/actions/getActivityInfo.js'
-import Home from '../components/Home/ActivityInfo.js'
+import ActivityInfo from '../components/Home/ActivityInfo.js'
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Home)
+)(ActivityInfo)

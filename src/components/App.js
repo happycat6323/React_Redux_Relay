@@ -1,18 +1,18 @@
 import React from 'react'
-import {Router ,Link} from 'react-router'
+import {browserHistory, Link} from 'react-router'
 import {Navbar,Nav,NavItem} from 'react-bootstrap'
 
 import '../public/css/main.css'
 
 export default class App extends React.Component {
     handleSelect(){
-        this.context.router.push('Subpage')
+        browserHistory.push('Subpage')
     }
 
     render(){
         return (
             <div>
-                <Navbar inverse>
+                <Navbar inverse style={{borderRadius:"0"}}>
                     <Navbar.Header>
                         <Navbar.Brand>
                             <Link to="/">React_Redux_Relay example</Link>
@@ -27,7 +27,3 @@ export default class App extends React.Component {
         )
     }
 }
-
-App.contextTypes = {
-    router: React.PropTypes.object.isRequired
-};

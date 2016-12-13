@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { Router, Route, browserHistory,IndexRoute } from 'react-router' //v3.0.0
-//import { syncHistoryWithStore } from 'react-router-redux'
-// Create an enhanced history that syncs navigation events with the store
-//const history = syncHistoryWithStore(browserHistory, store)
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
+
+const history = syncHistoryWithStore(browserHistory, store)
 
 import store from './redux/store/config.js'
 import App from './components/App.js'
@@ -13,7 +13,7 @@ import Subpage from './containers/Subpages.js'
 
 render(
     <Provider store={store}>
-      <Router history={browserHistory}>
+      <Router history={history}>
         <Route path="/" component={App}>
           <IndexRoute component={Home}/>
           <Route path="subpage" component={Subpage}/>
@@ -22,5 +22,3 @@ render(
     </Provider>,
     document.getElementById('root')
 )
-
-//browserHistory
