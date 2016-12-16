@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import {getActivityInfo} from '../redux/actions/getActivityInfo.js'
-import ActivityInfo from '../components/Home/ActivityInfo.js'
+import ActivityInfo from '../components/ActivityInfo/ActivityInfo.js'
 
 const mapStateToProps = (state, ownProps) => {
     return {

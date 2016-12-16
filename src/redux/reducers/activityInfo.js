@@ -8,7 +8,3 @@ const activityInfo = (state = [], action) => {
 }
 
 export default activityInfo
-
-
-
-
