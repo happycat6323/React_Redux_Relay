@@ -1,17 +1,17 @@
 import { connect } from 'react-redux'
-import Subpage from '../components/Subpages/Subpages.js'
-import {openModal} from '../redux/actions/createModal.js'
+import CommonModal from '../components/CommonModal/CommonModal.js'
+import {closeModal} from '../redux/actions/createModal.js'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        activityInfo: state.activityInfo
+        commonModal: state.commonModal
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return{
-        openModal: () => {
-            dispatch(openModal("create"))
+        closeModal: () => {
+            dispatch(closeModal("close"))
         }
     }
 }
@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Subpage)
+)(CommonModal)

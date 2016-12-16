@@ -20,5 +20,5 @@ export default class ActivityInfo extends React.Component {
 
 ActivityInfo.propTypes = {
     activityInfo: PropTypes.any.isRequired,
-    onClick: PropTypes.func.isRequired
+    getActivityInfo: PropTypes.func.isRequired
 }
