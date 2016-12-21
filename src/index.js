@@ -8,6 +8,7 @@ import store from './redux/store/config.js'
 import App from './components/App.js'
 import Home from './components/Home/Home.js'
 import Subpage from './containers/Subpages.js'
+import DetectEntity from './containers/DetectEntity.js'
 
 const history = syncHistoryWithStore(browserHistory, store)
 
@@ -17,6 +18,7 @@ render(
         <Route path="/" component={App}>
           <IndexRoute component={Home}/>
           <Route path="subpage" component={Subpage}/>
+          <Route path="detectEntity" component={DetectEntity}/>
         </Route>
       </Router>
     </Provider>,
