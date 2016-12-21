@@ -9,6 +9,10 @@ export default class App extends React.Component {
         browserHistory.push('Subpage')
     }
 
+    detectEntity() {
+      browserHistory.push('DetectEntity')
+    }
+
     render(){
         return (
             <div>
@@ -20,6 +24,9 @@ export default class App extends React.Component {
                     </Navbar.Header>
                     <Nav>
                         <NavItem eventKey={1} onClick={this.handleSelect.bind(this)}>Subpage</NavItem>
+                    </Nav>
+                    <Nav>
+                        <NavItem eventKey={2} onClick={this.detectEntity.bind(this)}>Entity Detection</NavItem>
                     </Nav>
                 </Navbar>
                 {this.props.children}
