@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import {getEntityInfo, postEntityToWit} from '../redux/actions/getEntityInfo.js'
+import {getEntityInfo, postEntityToWit} from '../redux/actions/entityInfo.js'
 import List from '../components/DetectEntity/List.js'
 
 const mapStateToProps = (state, ownProps) => {

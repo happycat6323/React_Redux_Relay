@@ -17,8 +17,3 @@ export default class ActivityInfo extends React.Component {
         )
     }
 }
-
-ActivityInfo.propTypes = {
-    activityInfo: PropTypes.any.isRequired,
-    getActivityInfo: PropTypes.func.isRequired
-}

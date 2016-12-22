@@ -1,7 +1,8 @@
-export const openModal = (title) => {
+export const openModal = (title,text) => {
     return {
         type: 'OPEN_MODAL',
-        title
+        title,
+        text
     }
 }
 

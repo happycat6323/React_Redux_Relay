@@ -1,4 +1,4 @@
-const activityInfo = (state = [], action) => {
+export const activityInfo = (state = [], action) => {
     switch (action.type) {
         case 'SET_ACTIVITY_INFO':
             return action.text
@@ -6,5 +6,3 @@ const activityInfo = (state = [], action) => {
             return state
     }
 }
-
-export default activityInfo

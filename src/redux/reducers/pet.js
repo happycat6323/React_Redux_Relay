@@ -1,4 +1,13 @@
-const pet = (state = [], action) => {
+export const createModal = (state = false, action) => {
+    switch (action.type) {
+        case 'OPEN_CREATE_MODAL':
+            return action.open
+        default:
+            return state
+    }
+}
+
+export const pet = (state = [], action) => {
     switch (action.type) {
         case 'CREATE_PET':
             return [...state,action.value]
@@ -10,5 +19,3 @@ const pet = (state = [], action) => {
             return state
     }
 }
-
-export default pet

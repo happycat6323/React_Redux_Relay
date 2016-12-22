@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import CommonModal from '../components/CommonModal/CommonModal.js'
-import {closeModal} from '../redux/actions/createModal.js'
+import {closeModal} from '../redux/actions/commonModal.js'
 
 const mapStateToProps = (state, ownProps) => {
     return {
