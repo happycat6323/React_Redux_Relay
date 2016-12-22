@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
 import {activityInfo} from './home.js'
-import {createModal} from './pet.js'
+import {createModal,pet} from './pet.js'
 import commonModal from './commonModal.js'
 import {entityInfo, entityPostState} from './entityInfo.js'
 
@@ -11,7 +11,8 @@ export default combineReducers({
         activityInfo
     }),
     pet: combineReducers({
-        createModal
+        createModal,
+        pet
     }),
     commonModal,
     entityInfo,

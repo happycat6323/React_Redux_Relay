@@ -10,6 +10,30 @@ export default class Subpage extends React.Component {
     }
 
     render() {
+        let pets = this.props.pet.map( (pet) => {
+            return(
+                <tr>
+                    <td>{pet.name}</td>
+                    <td>
+                        <Label bsStyle={pet.status === "存活"?"success":"danger"}>{pet.status}</Label>
+                    </td>
+                    <td>{pet.description}</td>
+                    <td>{pet.species}</td>
+                    <td>2016-12-12</td>
+                    <td>2016-12-19</td>
+                    <td>
+                        <Button bsStyle="info" bsSize="xsmall">
+                            <Icon name="pencil"/>
+                        </Button>
+                        &nbsp;
+                        <Button bsStyle="danger" bsSize="xsmall">
+                            <Icon name="trash-o"/>
+                        </Button>
+                    </td>
+                </tr>
+            )
+        })
+
         return (
             <div>
                 <h1>生死簿</h1>
@@ -48,9 +72,10 @@ export default class Subpage extends React.Component {
                             </Button>
                         </td>
                     </tr>
+                    {pets}
                     </tbody>
                 </Table>
-                <CreateModal createModal={this.props.createModal} closeCreateModal={this.props.closeCreateModal}/>
+                <CreateModal createModal={this.props.createModal} closeCreateModal={this.props.closeCreateModal} createPet={this.props.createPet}/>
             </div>
         )
     }
@@ -58,6 +83,8 @@ export default class Subpage extends React.Component {
 
 Subpage.propTypes = {
     createModal: PropTypes.any.isRequired,
+    pet: PropTypes.any.isRequired,
     openCreateModal: PropTypes.func.isRequired,
-    closeCreateModal: PropTypes.func.isRequired
+    closeCreateModal: PropTypes.func.isRequired,
+    createPet: PropTypes.func.isRequired
 }

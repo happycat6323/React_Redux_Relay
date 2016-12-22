@@ -10,11 +10,12 @@ export const createModal = (state = false, action) => {
 export const pet = (state = [], action) => {
     switch (action.type) {
         case 'CREATE_PET':
-            return [...state,action.value]
+            const pet = {name:action.name, status:action.status, description:action.description, species:action.species}
+            return [...state,pet]
         case 'DELETE_PET':
-            return action.value
+            return action
         case 'UPDATE_PET':
-            return action.value
+            return action
         default:
             return state
     }
