@@ -25,19 +25,19 @@ export default class EntityInfo extends React.Component {
         [{"value": props.entityInfo.entities[entityName][0].value}]})
       })
       this.state = {"entities": entities}
+      this.wordOption = props.sentence.split(" ")
     }
 
-    handleChange(index, field, e) {
+    handleChange(idx, field, e) {
       let entities = this.state.entities
       if(field === 'id') {
-        entities[index].id = e.target.value
+        entities[idx].id = e.target.value
       }
       if(field === 'value') {
-        entities[index].values[0].value = e.target.value
+        entities[idx].values[0].value = e.target.value
       }
       this.setState({"entities": entities})
     }
-
 
     render() {
         return (
@@ -52,8 +52,13 @@ export default class EntityInfo extends React.Component {
                 </Col>
                 <Col sm={6}>
                   <FormControl type="text"
-                  onChange={this.handleChange.bind(this, idx, 'value')}
-                  value={entity.values[0].value}/>
+                  componentClass={entity.id !== 'intent' ? "select" : "input"}
+                  value={entity.values[0].value}
+                  onChange={this.handleChange.bind(this, idx, 'value')}>
+                    {entity.id !== 'intent' ? this.wordOption.map((word, idx) => {
+                      return <option value={word} key={idx}>{word}</option>
+                    }) : ""}
+                  </FormControl>
                 </Col>
               </FormGroup>
             })}
