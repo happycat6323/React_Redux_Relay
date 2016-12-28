@@ -2,12 +2,11 @@ import React, { PropTypes } from 'react'
 import {Button, Form, FormGroup, Col, FormControl, ControlLabel, Panel} from 'react-bootstrap'
 import EntityInfo from './EntityInfo.js'
 
-export default class List extends React.Component {
+export default class EntityDetection extends React.Component {
     constructor(props) {
         super(props)
         this.state = {"sentence": ""}
         this.props.entityInfo.entities = {};
-        this.props.entityInfo._text = "";
     }
 
     handleChange(e) {
@@ -37,14 +36,14 @@ export default class List extends React.Component {
                   <FormGroup>
                     <Col smOffset={2} sm={8}>
                       <Panel>
-                      {this.props.entityInfo._text != "" ?
+                      {this.props.entityInfo._text ?
                         <EntityInfo {...this.props} sentence={this.state.sentence}/> : ""}
                       </Panel>
                     </Col>
                   </FormGroup>
                   <FormGroup>
                     <Col smOffset={2} sm={8}>
-                      {this.props.entityPostState ? this.props.entityPostState + "設定成功" : ""}
+                      {this.props.entityPostState === 'ok' ? "設定成功" : ""}
                     </Col>
                   </FormGroup>
                 </Form>
@@ -53,7 +52,7 @@ export default class List extends React.Component {
     }
 }
 
-List.propTypes = {
+EntityDetection.propTypes = {
     entityInfo: PropTypes.any.isRequired,
     entityPostState: PropTypes.string.isRequired,
     getEntityInfo: PropTypes.func.isRequired,

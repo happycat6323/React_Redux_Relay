@@ -28,23 +28,23 @@ export function getEntityInfo(sentence)  {
     }
 }
 
-export function postEntityToWit(sentence, intent)  {
+export function postEntityToWit(entities)  {
     return function (dispatch) {
-        dispatch(setPostEntityState(""))
+        dispatch(setPostEntityState("loading"))
         let myInit =  {
           method: 'POST',
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({"value": intent, "expressions":[sentence]})
-        };
-        console.log(myInit)
+          body: JSON.stringify({"entities": entities})
+        }
         return fetch(SERVER_URL + '/v1/entities', myInit)
             .then(response => {
               response.json().then(data => {
                 console.log(data)
-                dispatch(setPostEntityState(data.name))
+                dispatch(setEntityInfo({}))
+                dispatch(setPostEntityState(data.stat))
               })
             })
     }
