@@ -7,7 +7,7 @@ import '../public/css/main.css'
 export default class App extends React.Component {
     constructor(props) {
         super(props)
-        this.menuItems = ['Pet', 'DetectEntity']
+        this.menuItems = ['Pet', 'EntityDetection']
     }
     handleSelect(selectedKey){
         browserHistory.push(this.menuItems[selectedKey])

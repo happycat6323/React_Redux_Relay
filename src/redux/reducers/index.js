@@ -4,7 +4,7 @@ import { routerReducer } from 'react-router-redux'
 import {activityInfo} from './home.js'
 import {createModal,pet} from './pet.js'
 import commonModal from './commonModal.js'
-import {entityInfo, entityPostState} from './entityInfo.js'
+import {entityInfo, entityPostState} from './entityDetection.js'
 
 export default combineReducers({
     home: combineReducers({
@@ -14,8 +14,10 @@ export default combineReducers({
         createModal,
         pet
     }),
+    entityDetection: combineReducers({
+        entityInfo,
+        entityPostState
+    }),
     commonModal,
-    entityInfo,
-    entityPostState,
     routing: routerReducer
 })
