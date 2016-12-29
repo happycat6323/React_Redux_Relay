@@ -42,7 +42,7 @@ export default class CreateModal extends React.Component {
                             </Radio>
                         </FormGroup>
                         <FormGroup>
-                            <FormControl type="textarea" placeholder="描述" value={this.state.description} onChange={this.handleDescriptionChange.bind(this)} />
+                            <FormControl componentClass="textarea" placeholder="描述" value={this.state.description} onChange={this.handleDescriptionChange.bind(this)} />
                         </FormGroup>
                         <FormGroup>
                             <FormControl type="text" placeholder="種類" value={this.state.species} onChange={this.handleSpeciesChange.bind(this)} />

@@ -9,18 +9,20 @@ import App from './components/App.js'
 import Home from './containers/Home.js'
 import Pet from './containers/Pet.js'
 import EntityDetection from './containers/EntityDetection.js'
+import Client from './containers/Client.js'
 
 const history = syncHistoryWithStore(browserHistory, store)
 
 render(
     <Provider store={store}>
-      <Router history={history}>
-        <Route path="/" component={App}>
-          <IndexRoute component={Home}/>
-          <Route path="pet" component={Pet}/>
-          <Route path="entityDetection" component={EntityDetection}/>
-        </Route>
-      </Router>
+        <Router history={history}>
+            <Route path="/" component={App}>
+                <IndexRoute component={Home}/>
+                <Route path="pet" component={Pet}/>
+                <Route path="entityDetection" component={EntityDetection}/>
+                <Route path="client" component={Client}/>
+            </Route>
+        </Router>
     </Provider>,
     document.getElementById('root')
 )

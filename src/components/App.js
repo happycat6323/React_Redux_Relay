@@ -7,7 +7,7 @@ import '../public/css/main.css'
 export default class App extends React.Component {
     constructor(props) {
         super(props)
-        this.menuItems = ['Pet', 'EntityDetection']
+        this.menuItems = ['Pet', 'EntityDetection','Client']
     }
     handleSelect(selectedKey){
         browserHistory.push(this.menuItems[selectedKey])
@@ -27,6 +27,9 @@ export default class App extends React.Component {
                     </Nav>
                     <Nav>
                         <NavItem eventKey={1}>Entity Detection</NavItem>
+                    </Nav>
+                    <Nav>
+                        <NavItem eventKey={2}>Client</NavItem>
                     </Nav>
                 </Navbar>
                 <div style={{margin: "80px"}}>

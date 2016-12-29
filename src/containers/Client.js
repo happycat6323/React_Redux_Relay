@@ -1,33 +1,24 @@
 import { connect } from 'react-redux'
 
-import {getEntityInfo, postEntityToWit} from '../redux/actions/entityDetection.js'
-import EntityDetection from '../components/EntityDetection/EntityDetection.js'
+import Client from '../components/Client/Client.js'
 import {subscribe, publish} from '../redux/actions/client.js'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        entityInfo: state.entityDetection.entityInfo,
-        entityPostState: state.entityDetection.entityPostState,
         pushMessage: state.client.pushMessage,
         subscribeObject: state.client.subscribeObject
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        getEntityInfo: (sentence) => {
-            dispatch(getEntityInfo(sentence))
-        },
-        postEntityToWit: (entities) => {
-            dispatch(postEntityToWit(entities))
-        },
+    return{
         subscribe: () => {
             dispatch(subscribe("cat"))
         },
         publish: (message) => {
             const newMessage = {
                 message: message,
-                role: "robot"
+                role: "client"
             }
             dispatch(publish("cat",newMessage))
         }
@@ -37,4 +28,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(EntityDetection)
+)(Client)
