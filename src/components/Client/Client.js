@@ -5,13 +5,26 @@ export default class Client extends React.Component {
     constructor(props) {
         super(props)
         this.props.subscribe()
-        this.state = { message: ""}
+        this.state = { message: "",catt:"喵喵肚子好餓"}
     }
     componentWillUnmount(){
         this.props.subscribeObject.cancel()
     }
     handleMessageChange(e) {
-        this.setState({message: e.target.value});
+        this.setState({message: e.target.value})
+    }
+    test(num){
+        let a ="喵喵和媽媽去逛街，搭捷運到忠孝復興，想去逛微風廣場，卻不知道微風廣場"
+        let b ="喵喵和媽媽去逛街，搭捷運到忠孝復興，"
+        let c ="喵喵和媽媽去逛街"
+
+        if(num===0){
+            this.setState({catt: a})
+        }else if(num ===1){
+            this.setState({catt: b})
+        }else{
+            this.setState({catt: c})
+        }
     }
 
     render() {
@@ -44,6 +57,13 @@ export default class Client extends React.Component {
                                 </FormGroup>
                             </form>
                             <Button bsStyle="primary" onClick={this.props.publish.bind(this,this.state.message)} className="pull-right">Sent</Button>
+                            <Button onClick={this.test.bind(this,0)}>劇情一</Button>
+                            <Button onClick={this.test.bind(this,1)}>劇情二</Button>
+                            <Button onClick={this.test.bind(this,2)}>劇情三</Button>
+                            <br/><br/><br/>
+                            <Well style={{paddingBottom: '10px',paddingTop: '10px',overflow: 'auto'}}>
+                                {this.state.catt}
+                            </Well>
                         </Col>
                     </Row>
                 </Grid>
