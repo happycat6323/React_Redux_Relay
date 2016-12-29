@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 import {Button, Form, FormGroup, Col, FormControl, ControlLabel, Panel} from 'react-bootstrap'
+
 import EntityInfo from './EntityInfo.js'
+import ChatRoom from './ChatRoom.js'
 
 export default class EntityDetection extends React.Component {
     constructor(props) {
@@ -16,6 +18,8 @@ export default class EntityDetection extends React.Component {
     render() {
         return (
             <div>
+                <ChatRoom pushMessage={this.props.pushMessage} subscribeObject={this.props.subscribeObject} subscribe={this.props.subscribe} publish={this.props.publish}/>
+                <hr/>
                 <Form horizontal>
                   <FormGroup>
                     <Col componentClass={ControlLabel} sm={2}>
@@ -55,6 +59,11 @@ export default class EntityDetection extends React.Component {
 EntityDetection.propTypes = {
     entityInfo: PropTypes.any.isRequired,
     entityPostState: PropTypes.string.isRequired,
+    pushMessage: PropTypes.any.isRequired,
+    subscribeObject: PropTypes.any.isRequired,
+
     getEntityInfo: PropTypes.func.isRequired,
-    postEntityToWit: PropTypes.func.isRequired
+    postEntityToWit: PropTypes.func.isRequired,
+    subscribe: PropTypes.func.isRequired,
+    publish: PropTypes.func.isRequired
 }

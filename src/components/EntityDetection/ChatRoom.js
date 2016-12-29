@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import {Button, Grid, Row, Col, Well, FormGroup, FormControl, Label} from 'react-bootstrap'
 
-export default class Client extends React.Component {
+export default class ChatRoom extends React.Component {
     constructor(props) {
         super(props)
         this.props.subscribe()
@@ -17,9 +17,9 @@ export default class Client extends React.Component {
     render() {
         let pushMessage = this.props.pushMessage.map((data, index) => {
             return (
-                <div key={index} style={{textAlign:data.role === "client"?"right":"left"}}>
+                <div key={index} style={{textAlign:data.role === "robot"?"right":"left"}}>
                     {data.time} - {data.message} &nbsp; <Label bsStyle={data.role === "client"?"info":"warning"}>{data.role}</Label>
-                    <hr/><br/>
+                    <hr/>
                 </div>
             )
         })
@@ -50,11 +50,4 @@ export default class Client extends React.Component {
             </div>
         )
     }
-}
-
-Client.propTypes = {
-    pushMessage: PropTypes.any.isRequired,
-    subscribeObject: PropTypes.any.isRequired,
-    subscribe: PropTypes.func.isRequired,
-    publish: PropTypes.func.isRequired
 }
