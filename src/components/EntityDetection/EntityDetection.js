@@ -7,6 +7,7 @@ import ChatRoom from './ChatRoom.js'
 export default class EntityDetection extends React.Component {
     constructor(props) {
         super(props)
+        // props.setEntities({})
     }
 
     render() {
@@ -40,9 +41,11 @@ EntityDetection.propTypes = {
     pushMessage: PropTypes.any.isRequired,
     subscribeObject: PropTypes.any.isRequired,
     selectSentence: PropTypes.string.isRequired,
+    entities: PropTypes.any.isRequired,
 
     getEntityInfo: PropTypes.func.isRequired,
     postEntityToWit: PropTypes.func.isRequired,
+    setEntities: PropTypes.func.isRequired,
     subscribe: PropTypes.func.isRequired,
     publish: PropTypes.func.isRequired
 }

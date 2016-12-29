@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import Icon from 'react-fa'
 import {Button, Form, FormGroup, Col, FormControl, ControlLabel} from 'react-bootstrap'
 
 export default class EntityInfo extends React.Component {
@@ -26,13 +27,12 @@ export default class EntityInfo extends React.Component {
         [{"value": props.entityInfo.entities[entityName][0].value,
         "expressions":[props.entityInfo.entities[entityName][0].value]}]})
       })
-      this.state = {"entities": entities}
+      props.setEntities(entities)
       this.wordOption = props.selectSentence.split(" ")
     }
 
     handleChange(idx, field, e) {
-      console.log(e.target.value)
-      let entities = this.state.entities
+      let entities = JSON.parse(JSON.stringify(this.props.entities))
       if(field === 'id') {
         entities[idx].id = e.target.value
       }
@@ -42,21 +42,20 @@ export default class EntityInfo extends React.Component {
           entities[idx].values[0].expressions[0] = e.target.value
         }
       }
-      this.setState({"entities": entities})
-      console.log(this.state.entities)
+      this.props.setEntities(entities)
     }
 
     addSlot() {
-      let entities = this.state.entities
+      let entities = JSON.parse(JSON.stringify(this.props.entities))
       entities.push({"id": "", "values": [{"value": this.wordOption[0],
       "expressions":[this.wordOption[0]]}]})
-      this.setState({"entities": entities})
+      this.props.setEntities(entities)
     }
 
     deleteSlot(idx) {
-      let entities = this.state.entities
+      let entities = JSON.parse(JSON.stringify(this.props.entities))
       entities.splice(idx, 1)
-      this.setState({"entities": entities})
+      this.props.setEntities(entities)
     }
 
     render() {
@@ -69,7 +68,7 @@ export default class EntityInfo extends React.Component {
                 </Button>
               </Col>
             </FormGroup>
-            {this.state.entities.map((entity, idx) => {
+            {this.props.entities.map((entity, idx) => {
               return <FormGroup key={idx}>
                 <Col sm={4}>
                   <FormControl type="text"
@@ -78,14 +77,11 @@ export default class EntityInfo extends React.Component {
                   value={entity.id}/>
                 </Col>
                 <Col sm={6}>
-                  <FormControl type="text"
-                  componentClass={entity.id !== 'intent' ? "select" : "input"}
-                  value={entity.values[0].value}
-                  onChange={this.handleChange.bind(this, idx, 'value')}>
-                    {entity.id !== 'intent' ? this.wordOption.map((word, idx) => {
-                      return <option value={word} key={idx}>{word}</option>
-                    }) : ""}
-                  </FormControl>
+                {entity.id !== 'intent' ?
+                  <FormSelect idx={idx} entity={entity}
+                  wordOption = {this.wordOption} handleChange={this.handleChange.bind(this)}/>
+                : <FormInput idx={idx} entity={entity} handleChange={this.handleChange.bind(this)}/>
+                }
                 </Col>
                 {entity.id !== 'intent' ?
                 <Col sm={2}>
@@ -98,8 +94,10 @@ export default class EntityInfo extends React.Component {
             })}
             <FormGroup>
               <Col smOffset={10} sm={2}>
-                <Button onClick={this.props.postEntityToWit.bind(this, this.state.entities)}>
+                <Button onClick={this.props.postEntityToWit.bind(this, this.props.entities)}
+                        disabled={this.props.entityPostState === 'loading'}>
                   修改至wit.ai
+                  {this.props.entityPostState === 'loading' ? <Icon spin name="spinner" /> : ""}
                 </Button>
               </Col>
             </FormGroup>
@@ -108,20 +106,33 @@ export default class EntityInfo extends React.Component {
     }
 }
 
-// class FormSelect extends React.Component {
-//   constructor(props) {
-//     super(props);
-//   }
-//   render() {
-//     return (
-//       <FormControl type="text"
-//       componentClass="select"
-//       value={entity.values[0].value}
-//       onChange={this.handleChange.bind(this, idx, 'value')}>
-//         {this.wordOption.map((word, idx) => {
-//           return <option value={word} key={idx}>{word}</option>
-//         })}
-//       </FormControl>
-//     );
-//   }
-// }
+class FormSelect extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <FormControl type="text"
+      componentClass="select"
+      value={this.props.entity.values[0].value}
+      onChange={this.props.handleChange.bind(this, this.props.idx, 'value')}>
+        {this.props.wordOption.map((word, idx) => {
+          return <option value={word} key={idx}>{word}</option>
+        })}
+      </FormControl>
+    );
+  }
+}
+
+class FormInput extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <FormControl type="text"
+      value={this.props.entity.values[0].value}
+      onChange={this.props.handleChange.bind(this, this.props.idx, 'value')}/>
+    );
+  }
+}

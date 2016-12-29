@@ -57,3 +57,10 @@ export function postEntityToWit(entities)  {
             })
     }
 }
+
+export function setEntities(entities) {
+    return {
+        type: 'SET_ENTITIES',
+        entities
+    }
+}

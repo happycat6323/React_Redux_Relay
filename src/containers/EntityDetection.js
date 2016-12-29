@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import {getEntityInfo, postEntityToWit} from '../redux/actions/entityDetection.js'
+import {getEntityInfo, postEntityToWit, setEntities} from '../redux/actions/entityDetection.js'
 import EntityDetection from '../components/EntityDetection/EntityDetection.js'
 import {subscribe, publish} from '../redux/actions/client.js'
 
@@ -8,6 +8,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         entityInfo: state.entityDetection.entityInfo,
         entityPostState: state.entityDetection.entityPostState,
+        entities: state.entityDetection.entities,
         pushMessage: state.client.pushMessage,
         subscribeObject: state.client.subscribeObject,
         selectSentence: state.entityDetection.selectSentence
@@ -21,6 +22,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         postEntityToWit: (entities) => {
             dispatch(postEntityToWit(entities))
+        },
+        setEntities: (entities) => {
+          dispatch(setEntities(entities))
         },
         subscribe: () => {
             dispatch(subscribe("cat"))

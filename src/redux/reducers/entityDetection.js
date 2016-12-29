@@ -17,6 +17,15 @@ export const entityPostState = (state = "", action) => {
     }
 }
 
+export const entities = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_ENTITIES':
+            return action.entities
+        default:
+            return state
+    }
+}
+
 export const selectSentence = (state = "", action) => {
     switch (action.type) {
         case 'SET_SELECT_SENTENCE':
