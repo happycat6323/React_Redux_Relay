@@ -16,3 +16,12 @@ export const entityPostState = (state = "", action) => {
             return state
     }
 }
+
+export const selectSentence = (state = "", action) => {
+    switch (action.type) {
+        case 'SET_SELECT_SENTENCE':
+            return action.sentence
+        default:
+            return state
+    }
+}

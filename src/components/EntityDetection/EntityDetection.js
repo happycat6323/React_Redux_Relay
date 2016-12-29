@@ -7,41 +7,19 @@ import ChatRoom from './ChatRoom.js'
 export default class EntityDetection extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {"sentence": ""}
-        this.props.entityInfo.entities = {};
-    }
-
-    handleChange(e) {
-        this.setState({"sentence": e.target.value})
     }
 
     render() {
         return (
             <div>
-                <ChatRoom pushMessage={this.props.pushMessage} subscribeObject={this.props.subscribeObject} subscribe={this.props.subscribe} publish={this.props.publish}/>
+                <ChatRoom {...this.props}/>
                 <hr/>
                 <Form horizontal>
-                  <FormGroup>
-                    <Col componentClass={ControlLabel} sm={2}>
-                      輸入句子
-                    </Col>
-                    <Col sm={8}>
-                      <FormControl type="text" placeholder="輸入句子"
-                      onChange={this.handleChange.bind(this)}/>
-                    </Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col smOffset={2} sm={10}>
-                      <Button onClick={this.props.getEntityInfo.bind(this, this.state.sentence)}>
-                        查詢
-                      </Button>
-                    </Col>
-                  </FormGroup>
                   <FormGroup>
                     <Col smOffset={2} sm={8}>
                       <Panel>
                       {this.props.entityInfo._text ?
-                        <EntityInfo {...this.props} sentence={this.state.sentence}/> : ""}
+                        <EntityInfo {...this.props}/> : ""}
                       </Panel>
                     </Col>
                   </FormGroup>
@@ -61,6 +39,7 @@ EntityDetection.propTypes = {
     entityPostState: PropTypes.string.isRequired,
     pushMessage: PropTypes.any.isRequired,
     subscribeObject: PropTypes.any.isRequired,
+    selectSentence: PropTypes.string.isRequired,
 
     getEntityInfo: PropTypes.func.isRequired,
     postEntityToWit: PropTypes.func.isRequired,

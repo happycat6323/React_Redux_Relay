@@ -15,6 +15,13 @@ function setPostEntityState(state) {
     }
 }
 
+function setSelectSentence(sentence) {
+    return {
+        type: 'SET_SELECT_SENTENCE',
+        sentence
+    }
+}
+
 export function getEntityInfo(sentence)  {
     return function (dispatch) {
         let myInit = { method: 'GET'};
@@ -22,6 +29,7 @@ export function getEntityInfo(sentence)  {
             .then(response => {
               response.json().then(data => {
                 console.log(data)
+                dispatch(setSelectSentence(sentence))
                 dispatch(setEntityInfo(data))
               })
             })

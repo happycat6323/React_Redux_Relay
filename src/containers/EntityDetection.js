@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => {
         entityInfo: state.entityDetection.entityInfo,
         entityPostState: state.entityDetection.entityPostState,
         pushMessage: state.client.pushMessage,
-        subscribeObject: state.client.subscribeObject
+        subscribeObject: state.client.subscribeObject,
+        selectSentence: state.entityDetection.selectSentence
     }
 }
 

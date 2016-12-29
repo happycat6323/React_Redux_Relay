@@ -20,13 +20,14 @@ export default class EntityInfo extends React.Component {
       props.entityInfo.entities.intent[0].value : ""
       let entities = [{"id": "intent", "lookups": ["trait"], "values": [{"value": intent, "expressions":[props.sentence]}]}]
       delete props.entityInfo.entities.intent
+
       Object.keys(props.entityInfo.entities).map((entityName, idx) => {
         entities.push({"id": entityName, "values":
         [{"value": props.entityInfo.entities[entityName][0].value,
         "expressions":[props.entityInfo.entities[entityName][0].value]}]})
       })
       this.state = {"entities": entities}
-      this.wordOption = props.sentence.split(" ")
+      this.wordOption = props.selectSentence.split(" ")
     }
 
     handleChange(idx, field, e) {
@@ -106,3 +107,21 @@ export default class EntityInfo extends React.Component {
         )
     }
 }
+
+// class FormSelect extends React.Component {
+//   constructor(props) {
+//     super(props);
+//   }
+//   render() {
+//     return (
+//       <FormControl type="text"
+//       componentClass="select"
+//       value={entity.values[0].value}
+//       onChange={this.handleChange.bind(this, idx, 'value')}>
+//         {this.wordOption.map((word, idx) => {
+//           return <option value={word} key={idx}>{word}</option>
+//         })}
+//       </FormControl>
+//     );
+//   }
+// }
