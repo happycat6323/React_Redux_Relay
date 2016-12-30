@@ -5,65 +5,46 @@ import EntityInfo from './EntityInfo.js'
 import ChatRoom from './ChatRoom.js'
 
 export default class EntityDetection extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {"sentence": ""}
-        this.props.entityInfo.entities = {};
-    }
+  constructor(props) {
+    super(props)
+  }
 
-    handleChange(e) {
-        this.setState({"sentence": e.target.value})
-    }
-
-    render() {
-        return (
-            <div>
-                <ChatRoom pushMessage={this.props.pushMessage} subscribeObject={this.props.subscribeObject} subscribe={this.props.subscribe} publish={this.props.publish}/>
-                <hr/>
-                <Form horizontal>
-                  <FormGroup>
-                    <Col componentClass={ControlLabel} sm={2}>
-                      輸入句子
-                    </Col>
-                    <Col sm={8}>
-                      <FormControl type="text" placeholder="輸入句子"
-                      onChange={this.handleChange.bind(this)}/>
-                    </Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col smOffset={2} sm={10}>
-                      <Button onClick={this.props.getEntityInfo.bind(this, this.state.sentence)}>
-                        查詢
-                      </Button>
-                    </Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col smOffset={2} sm={8}>
-                      <Panel>
-                      {this.props.entityInfo._text ?
-                        <EntityInfo {...this.props} sentence={this.state.sentence}/> : ""}
-                      </Panel>
-                    </Col>
-                  </FormGroup>
-                  <FormGroup>
-                    <Col smOffset={2} sm={8}>
-                      {this.props.entityPostState === 'ok' ? "設定成功" : ""}
-                    </Col>
-                  </FormGroup>
-                </Form>
-            </div>
+  render() {
+    return (
+      <div>
+        <ChatRoom {...this.props}/>
+        <hr/>
+        <Form horizontal>
+          <FormGroup>
+            <Col smOffset={2} sm={8}>
+              <Panel>
+                {this.props.entityInfo._text ?
+                  <EntityInfo {...this.props}/> : ""}
+                  </Panel>
+                </Col>
+              </FormGroup>
+              <FormGroup>
+                <Col smOffset={2} sm={8}>
+                  {this.props.entityPostState === 'ok' ? "設定成功" : ""}
+                </Col>
+              </FormGroup>
+            </Form>
+          </div>
         )
+      }
     }
-}
 
-EntityDetection.propTypes = {
-    entityInfo: PropTypes.any.isRequired,
-    entityPostState: PropTypes.string.isRequired,
-    pushMessage: PropTypes.any.isRequired,
-    subscribeObject: PropTypes.any.isRequired,
+    EntityDetection.propTypes = {
+      entityInfo: PropTypes.any.isRequired,
+      entityPostState: PropTypes.string.isRequired,
+      pushMessage: PropTypes.any.isRequired,
+      subscribeObject: PropTypes.any.isRequired,
+      selectSentence: PropTypes.string.isRequired,
+      entities: PropTypes.any.isRequired,
 
-    getEntityInfo: PropTypes.func.isRequired,
-    postEntityToWit: PropTypes.func.isRequired,
-    subscribe: PropTypes.func.isRequired,
-    publish: PropTypes.func.isRequired
-}
+      getEntityInfo: PropTypes.func.isRequired,
+      postEntityToWit: PropTypes.func.isRequired,
+      setEntities: PropTypes.func.isRequired,
+      subscribe: PropTypes.func.isRequired,
+      publish: PropTypes.func.isRequired
+    }
