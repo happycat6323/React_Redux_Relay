@@ -5,7 +5,7 @@ export default class Client extends React.Component {
     constructor(props) {
         super(props)
         this.props.subscribe()
-        this.state = { message: "",catt:"喵喵肚子好餓"}
+        this.state = { message: "",catt:"瑋瑋和喵喵在逛微風，買了超多東西，提的累死了，想知道館內有沒有可以寄放的地方"}
     }
     componentWillUnmount(){
         this.props.subscribeObject.cancel()
@@ -14,9 +14,9 @@ export default class Client extends React.Component {
         this.setState({message: e.target.value})
     }
     test(num){
-        let a ="喵喵和媽媽去逛街，搭捷運到忠孝復興，想去逛微風廣場，卻不知道微風廣場"
-        let b ="喵喵和媽媽去逛街，搭捷運到忠孝復興，"
-        let c ="喵喵和媽媽去逛街"
+        let a ="瑋瑋和喵喵在逛微風，買了超多東西，提的累死了，想知道館內有沒有可以寄放的地方"
+        let b ="星星在遠東百貨看到一件他媽媽想要的外套，想傳照片給他媽媽確認要不要買，但他網路用量已經用完，他想知道百貨是否有免費的wifi"
+        let c ="嘉嘉在日本的百貨公司買了好幾件衣服，店員跟她說可以tax free，但她卻不知道哪裡可以辦理退稅"
 
         if(num===0){
             this.setState({catt: a})
