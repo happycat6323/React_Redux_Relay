@@ -18,7 +18,13 @@ export default class ChatRoom extends React.Component {
         let pushMessage = this.props.pushMessage.map((data, index) => {
             return (
                 <div key={index} style={{textAlign:data.role === "robot"?"right":"left"}}>
-                    {data.time} - {data.message} &nbsp; <Label bsStyle={data.role === "client"?"info":"warning"}>{data.role}</Label>
+                    {data.time} - {data.message} &nbsp;
+                    <Label bsStyle={data.role === "client"?"info":"warning"}>{data.role}</Label> &nbsp;
+                    {data.role === "client" ?
+                      <Button onClick={this.props.getEntityInfo.bind(this, data.message)}>
+                          查詢
+                      </Button>
+                    : "" }
                     <hr/>
                 </div>
             )
