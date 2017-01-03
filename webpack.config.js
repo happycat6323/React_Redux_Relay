@@ -47,6 +47,9 @@ var config = {
         }, {
             test: /\.(otf|eot|svg|ttf|woff)\??/,
             loader: 'url-loader?limit=8192'
+        }, {
+            test: /\.json$/,
+            loader: 'json'
         }]
     },
     plugins: [

@@ -42,3 +42,25 @@ export const pushMessage = (state = [], action) => {
             return state
     }
 }
+
+export const plots = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_PLOT':
+            return action.plots
+        default:
+            return state
+    }
+}
+
+export const currentPlot = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_CURRENT_PLOT':
+            const currentPlot = {
+                plot: action.plot,
+                index: action.index
+            }
+            return currentPlot
+        default:
+            return state
+    }
+}

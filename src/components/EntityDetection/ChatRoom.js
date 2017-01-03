@@ -26,7 +26,7 @@ export default class ChatRoom extends React.Component {
 
         return (
             <div>
-                <Grid>
+                <Grid style={{paddingRight:'80px'}}>
                     <Row className='show-grid'>
                         <Col md={6} xs={6}>
                             <h3 style={{textAlign:'center',fontWeight: '900'}}>聊天室</h3>
@@ -38,7 +38,7 @@ export default class ChatRoom extends React.Component {
                         <Col md={6} xs={6}>
                             <h3 style={{textAlign:'center',fontWeight: '900'}}>傳送訊息</h3>
                             <br/>
-                            <form style={{paddingBottom: '10px',paddingTop: '10px'}}>
+                            <form>
                                 <FormGroup>
                                     <FormControl componentClass="textarea" placeholder="訊息" value={this.state.message} onChange={this.handleMessageChange.bind(this)} />
                                 </FormGroup>
