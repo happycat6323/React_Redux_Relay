@@ -7,8 +7,8 @@ var gulp = require('gulp'),
 
 
 var distPath = 'build/';
-var remoteZipPath = '/var/lib/tomcat7/webapps/React_Redux_Relay.zip';
-var remoteProjectPath = '/var/lib/tomcat7/webapps/React_Redux_Relay';
+var remoteZipPath = '/var/lib/tomcat7/webapps/Data_Collection_Platform.zip';
+var remoteProjectPath = '/var/lib/tomcat7/webapps/Data_Collection_Platform';
 
 
 
@@ -17,17 +17,17 @@ gulp.task('cleanDist', function () {
         .pipe(clean());
 });
 
-gulp.task('replaceServerUrlToAws', function () {
+gulp.task('replaceServerUrl', function () {
     var dirPath = distPath;
     return gulp.src(dirPath + 'bundle.js')
-        .pipe(replace(/var SERVER_URL =(.+)/g, 'var SERVER_URL = "54.65.121.122:8080";'))
+        .pipe(replace(/var SERVER_URL =(.+)/g, 'var SERVER_URL = "/Data_Collection_Platform";'))
         .pipe(gulp.dest(dirPath));
 });
 
 
 gulp.task('zipDist', function () {
     return gulp.src(distPath + '**')
-        .pipe(zip('React_Redux_Relay.zip'))
+        .pipe(zip('Data_Collection_Platform.zip'))
         .pipe(gulp.dest('dist'));
 });
 
@@ -37,7 +37,7 @@ gulp.task('deleteRemoteFiles', function () {
 });
 
 gulp.task('uploadZip', function () {
-    return gulp.src('dist/React_Redux_Relay.zip')
+    return gulp.src('dist/Data_Collection_Platform.zip')
         .pipe(ssh.sftp('write', remoteZipPath));
 });
 
@@ -55,6 +55,7 @@ gulp.task('deploy-aws', function (cb) {
     setDeployServer("aws");
     runSequence(
         'cleanDist',
+        'replaceServerUrl',
         'zipDist',
         'deleteRemoteFiles',
         'uploadZip',
@@ -63,6 +64,18 @@ gulp.task('deploy-aws', function (cb) {
         cb);
 });
 
+gulp.task('deploy-kiwi', function (cb) {
+    setDeployServer("kiwi");
+    runSequence(
+        'cleanDist',
+        'replaceServerUrl',
+        'zipDist',
+        'deleteRemoteFiles',
+        'uploadZip',
+        'unzipRemoteFiles',
+        'deleteRemoteZip',
+        cb);
+});
 
 function setSSHConfig(config) {
     ssh = require('gulp-ssh')({
@@ -75,6 +88,9 @@ function setDeployServer(serverName) {
     switch (serverName) {
         case "aws":
             setSSHConfig(sshConfig.aws);
+            break;
+        case "kiwi":
+            setSSHConfig(sshConfig.kiwi);
             break;
     }
 }
