@@ -29,7 +29,7 @@ export function getEntityInfo(sentence)  {
             .then(response => {
               response.json().then(data => {
                 console.log(data)
-                dispatch(setSelectSentence(sentence))
+                dispatch(setSelectSentence(data._text))
                 dispatch(setEntityInfo(data))
               })
             })

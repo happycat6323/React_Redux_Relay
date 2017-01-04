@@ -22,7 +22,7 @@ export default class EntityInfo extends React.Component {
     let entities = [{"id": "intent",
       "lookups": ["trait"],
       "values": [{"value": intent,
-      "expressions":[props.sentence]
+      "expressions":[props.entityInfo._text]
     }]}]
     delete props.entityInfo.entities.intent
 
