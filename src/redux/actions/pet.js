@@ -5,7 +5,7 @@ export const openCreateModal = (open) => {
     }
 }
 
-export const createPet = (name,status,description,species) => {
+export const createPet = (name, status, description, species) => {
     return {
         type: 'CREATE_PET',
         name,

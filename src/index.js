@@ -13,10 +13,12 @@ import Client from './containers/Client.js'
 
 const history = syncHistoryWithStore(browserHistory, store)
 
+let SERVER_URL = "";
+
 render(
     <Provider store={store}>
         <Router history={history}>
-            <Route path="/" component={App}>
+            <Route path={SERVER_URL+"/"} component={App}>
                 <IndexRoute component={Home}/>
                 <Route path="pet" component={Pet}/>
                 <Route path="entityDetection" component={EntityDetection}/>

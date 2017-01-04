@@ -22,13 +22,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 message: message,
                 role: "client"
             }
-            dispatch(publish("cat",newMessage))
+            dispatch(publish("cat", newMessage))
         },
         getPlot: () => {
             dispatch(getPlot())
         },
-        setCurrentPlot: (plot,index) => {
-            dispatch(setCurrentPlot(plot,index))
+        setCurrentPlot: (plot, index) => {
+            dispatch(setCurrentPlot(plot, index))
         }
     }
 }

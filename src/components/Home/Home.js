@@ -8,11 +8,11 @@ export default class Home extends React.Component {
         super(props)
     }
 
+//<ActivityInfo activityInfo={this.props.activityInfo} getActivityInfo={this.props.getActivityInfo}/>
     render() {
         return (
             <div>
-                <h1>hello world</h1>
-                <ActivityInfo activityInfo={this.props.activityInfo} getActivityInfo={this.props.getActivityInfo}/>
+                <h1>資料收集平台</h1>
             </div>
         )
     }

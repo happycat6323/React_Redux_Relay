@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         getActivityInfo: () => {
-            dispatch(getActivityInfo(149,964890790261256))
+            dispatch(getActivityInfo(149, 964890790261256))
         }
     }
 }

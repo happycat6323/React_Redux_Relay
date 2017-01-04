@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>React_Redux_Relay example</title>
+    <meta charset="utf-8">
+    <title>Data_Collection_Platform</title>
   </head>
   <body>
     <div id="root">

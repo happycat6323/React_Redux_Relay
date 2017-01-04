@@ -37,7 +37,7 @@ export const pushMessage = (state = [], action) => {
                 role: action.role,
                 time: action.time
             }
-            return [...state,newMessage]
+            return [...state, newMessage]
         default:
             return state
     }

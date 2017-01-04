@@ -1,16 +1,18 @@
 import React from 'react'
 import {browserHistory, Link} from 'react-router'
-import {Navbar,Nav,NavItem} from 'react-bootstrap'
+import {Navbar, Nav, NavItem} from 'react-bootstrap'
 
 import '../public/css/main.css'
+
+let SERVER_URL = "";
 
 export default class App extends React.Component {
     constructor(props) {
         super(props)
-        this.menuItems = ['Pet', 'EntityDetection','Client']
+        this.menuItems = ['/pet', '/entityDetection', '/client']
     }
     handleSelect(selectedKey){
-        browserHistory.push(this.menuItems[selectedKey])
+        browserHistory.push(SERVER_URL + this.menuItems[selectedKey])
     }
 
     render(){
@@ -19,12 +21,9 @@ export default class App extends React.Component {
                 <Navbar inverse style={{borderRadius:"0"}} onSelect={this.handleSelect.bind(this)}>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Link to="/">React_Redux_Relay example</Link>
+                            <Link to={SERVER_URL+"/"}>Data_Collection_Platform</Link>
                         </Navbar.Brand>
                     </Navbar.Header>
-                    <Nav>
-                        <NavItem eventKey={0}>Pet</NavItem>
-                    </Nav>
                     <Nav>
                         <NavItem eventKey={1}>Entity Detection</NavItem>
                     </Nav>

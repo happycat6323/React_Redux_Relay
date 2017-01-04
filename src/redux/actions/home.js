@@ -7,10 +7,10 @@ function setActivityInfo  (text) {
     }
 }
 
-export function getActivityInfo  (activityId,fbId)  {
-    return function (dispach){
+export function getActivityInfo  (activityId, fbId)  {
+    return function (dispatch){
         return fetch('http://210.61.19.15/standard-platform/api/v1/activityInfo?activity_id='+activityId+'&fb_id='+fbId)
             .then(response => response.json())
-            .then(json => dispach(setActivityInfo(json)))
+            .then(json => dispatch(setActivityInfo(json)))
     }
 }
