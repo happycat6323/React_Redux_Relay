@@ -3,7 +3,7 @@ import moment from 'moment'
 import plotObject from '../../../plot.json'
 
 export function subscribe  (channel)  {
-    return (dispatch,state) => {
+    return (dispatch, state) => {
         let subscribeObject = state().client.client.subscribe("/" + channel, (message) => {
             let time = moment().format('YYYY-MM-DD HH:mm:ss')
             console.log("[接收到推播訊息]" + time + " - " + message.message + " - "+ message.role)
@@ -29,16 +29,16 @@ export const handlePushMessage = (message, time) => {
     }
 }
 
-export function publish  (channel,message)  {
-    return (dispatch,state) => {
+export function publish  (channel, message)  {
+    return (dispatch, state) => {
         state().client.client.publish("/" + channel, message)
     }
 }
 
 export function getPlot () {
-    return (dispatch,state) => {
+    return (dispatch, state) => {
         dispatch(setPlot(plotObject.plot))
-        dispatch(setCurrentPlot(plotObject.plot[0],1))
+        dispatch(setCurrentPlot(plotObject.plot[0], 1))
     }
 }
 
@@ -49,7 +49,7 @@ export const setPlot = (plots) => {
     }
 }
 
-export const setCurrentPlot = (plot,index) => {
+export const setCurrentPlot = (plot, index) => {
     return {
         type: 'SET_CURRENT_PLOT',
         plot,

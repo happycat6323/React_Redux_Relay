@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 message: message,
                 role: "robot"
             }
-            dispatch(publish("cat",newMessage))
+            dispatch(publish("cat", newMessage))
         }
     }
 }

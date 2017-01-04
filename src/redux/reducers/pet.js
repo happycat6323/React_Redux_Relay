@@ -11,7 +11,7 @@ export const pet = (state = [], action) => {
     switch (action.type) {
         case 'CREATE_PET':
             const pet = {name:action.name, status:action.status, description:action.description, species:action.species}
-            return [...state,pet]
+            return [...state, pet]
         case 'DELETE_PET':
             return action
         case 'UPDATE_PET':

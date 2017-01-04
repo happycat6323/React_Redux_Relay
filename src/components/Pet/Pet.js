@@ -15,7 +15,7 @@ export default class Subpage extends React.Component {
                 <tr>
                     <td>{pet.name}</td>
                     <td>
-                        <Label bsStyle={pet.status === "存活"?"success":"danger"}>{pet.status}</Label>
+                        <Label bsStyle={pet.status === "存活" ? "success" : "danger"}>{pet.status}</Label>
                     </td>
                     <td>{pet.description}</td>
                     <td>{pet.species}</td>

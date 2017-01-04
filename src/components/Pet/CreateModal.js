@@ -5,7 +5,7 @@ export default class CreateModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name:"",status:"",description:"",species:""
+            name:"", status:"", description:"", species:""
         }
     }
     handleNameChange(e) {
@@ -51,7 +51,7 @@ export default class CreateModal extends React.Component {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={this.props.closeCreateModal}>取消</Button>
-                    <Button bsStyle="primary" onClick={this.props.createPet.bind(this,this.state.name,this.state.status,this.state.description,this.state.species)}>確定</Button>
+                    <Button bsStyle="primary" onClick={this.props.createPet.bind(this, this.state.name, this.state.status, this.state.description, this.state.species)}>確定</Button>
                 </Modal.Footer>
             </Modal>
         )

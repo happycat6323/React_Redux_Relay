@@ -18,8 +18,8 @@ export default class Client extends React.Component {
     render() {
         let pushMessage = this.props.pushMessage.map((data, index) => {
             return (
-                <div key={index} style={{textAlign:data.role === "client"?"right":"left"}}>
-                    {data.time} - {data.message} &nbsp; <Label bsStyle={data.role === "client"?"info":"warning"}>{data.role}</Label>
+                <div key={index} style={{textAlign:data.role === "client" ? "right" : "left"}}>
+                    {data.time} - {data.message} &nbsp; <Label bsStyle={data.role === "client" ? "info" : "warning"}>{data.role}</Label>
                     <hr/><br/>
                 </div>
             )
@@ -27,7 +27,7 @@ export default class Client extends React.Component {
 
         let plotButton = this.props.plots.map((data, index) => {
             return (
-                <Button onClick={this.props.setCurrentPlot.bind(this,data,index+1)} key={index}>劇情 {index+1}</Button>
+                <Button onClick={this.props.setCurrentPlot.bind(this, data, index+1)} key={index}>劇情 {index+1}</Button>
             )
         })
 
@@ -50,7 +50,7 @@ export default class Client extends React.Component {
                                     <FormControl componentClass="textarea" placeholder="訊息" value={this.state.message} onChange={this.handleMessageChange.bind(this)} />
                                 </FormGroup>
                             </form>
-                            <Button bsStyle="primary" onClick={this.props.publish.bind(this,this.state.message)} className="pull-right">Sent</Button>
+                            <Button bsStyle="primary" onClick={this.props.publish.bind(this, this.state.message)} className="pull-right">Sent</Button>
                             <br/><br/><br/>
                             {plotButton}
                             <br/><br/>

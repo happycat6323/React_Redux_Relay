@@ -1,6 +1,6 @@
 import React from 'react'
 import {browserHistory, Link} from 'react-router'
-import {Navbar,Nav,NavItem} from 'react-bootstrap'
+import {Navbar, Nav, NavItem} from 'react-bootstrap'
 
 import '../public/css/main.css'
 
@@ -9,7 +9,7 @@ let SERVER_URL = "";
 export default class App extends React.Component {
     constructor(props) {
         super(props)
-        this.menuItems = ['/pet', '/entityDetection','/client']
+        this.menuItems = ['/pet', '/entityDetection', '/client']
     }
     handleSelect(selectedKey){
         browserHistory.push(SERVER_URL + this.menuItems[selectedKey])
