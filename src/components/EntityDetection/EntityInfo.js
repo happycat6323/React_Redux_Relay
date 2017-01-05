@@ -22,12 +22,15 @@ export default class EntityInfo extends React.Component {
     let entities = [{"id": "intent",
       "lookups": ["trait"],
       "values": [{"value": intent,
-      "expressions":[props.sentence]
+      "expressions":[props.entityInfo._text]
     }]}]
     delete props.entityInfo.entities.intent
 
     Object.keys(props.entityInfo.entities).map((entityName, idx) => {
-      entities.push({"id": entityName, "values": [{"value": props.entityInfo.entities[entityName][0].value, "expressions":[props.entityInfo.entities[entityName][0].value]}]})
+      entities.push({"id": entityName,
+        "values": [{"value": props.entityInfo.entities[entityName][0].value,
+        "expressions":[props.entityInfo.entities[entityName][0].value]}]
+      })
     })
     props.setEntities(entities)
     this.wordOption = props.selectSentence.split(" ")
