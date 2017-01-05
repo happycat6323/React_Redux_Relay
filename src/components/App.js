@@ -4,7 +4,7 @@ import {Navbar, Nav, NavItem} from 'react-bootstrap'
 
 import '../public/css/main.css'
 
-let SERVER_URL = "";
+let FOLDER_NAME = "";
 
 export default class App extends React.Component {
     constructor(props) {
@@ -12,7 +12,7 @@ export default class App extends React.Component {
         this.menuItems = ['/pet', '/entityDetection', '/client']
     }
     handleSelect(selectedKey){
-        browserHistory.push(SERVER_URL + this.menuItems[selectedKey])
+        browserHistory.push(FOLDER_NAME + this.menuItems[selectedKey])
     }
 
     render(){
@@ -21,7 +21,7 @@ export default class App extends React.Component {
                 <Navbar inverse style={{borderRadius:"0"}} onSelect={this.handleSelect.bind(this)}>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Link to={SERVER_URL+"/"}>Data_Collection_Platform</Link>
+                            <Link to={FOLDER_NAME + "/"}>Data_Collection_Platform</Link>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>

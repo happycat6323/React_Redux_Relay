@@ -5,13 +5,13 @@ export default class ChatRoom extends React.Component {
     constructor(props) {
         super(props)
         this.props.subscribe()
-        this.state = { message: ""}
     }
     componentWillUnmount(){
         this.props.subscribeObject.cancel()
+        this.props.handlePushMessageChange("")
     }
     handleMessageChange(e) {
-        this.setState({message: e.target.value});
+        this.props.handlePushMessageChange(e.target.value)
     }
 
     render() {
@@ -46,10 +46,10 @@ export default class ChatRoom extends React.Component {
                             <br/>
                             <form>
                                 <FormGroup>
-                                    <FormControl componentClass="textarea" placeholder="訊息" value={this.state.message} onChange={this.handleMessageChange.bind(this)} />
+                                    <FormControl componentClass="textarea" placeholder="訊息" value={this.props.pushMessageChange} onChange={this.handleMessageChange.bind(this)} />
                                 </FormGroup>
                             </form>
-                            <Button bsStyle="primary" onClick={this.props.publish.bind(this,this.state.message)} className="pull-right">Sent</Button>
+                            <Button bsStyle="primary" onClick={this.props.publish.bind(this,this.props.pushMessageChange)} className="pull-right">Sent</Button>
                         </Col>
                     </Row>
                 </Grid>

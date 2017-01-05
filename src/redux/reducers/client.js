@@ -43,6 +43,15 @@ export const pushMessage = (state = [], action) => {
     }
 }
 
+export const pushMessageChange = (state = "", action) => {
+    switch (action.type) {
+        case 'HANDLE_PUSH_MESSAGE_CHANGE':
+            return action.message
+        default:
+            return state
+    }
+}
+
 export const plots = (state = [], action) => {
     switch (action.type) {
         case 'SET_PLOT':

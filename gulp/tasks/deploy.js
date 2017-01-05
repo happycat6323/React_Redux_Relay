@@ -7,8 +7,8 @@ var gulp = require('gulp'),
 
 
 var distPath = 'build/';
-var remoteZipPath = '/var/lib/tomcat7/webapps/Data_Collection_Platform.zip';
-var remoteProjectPath = '/var/lib/tomcat7/webapps/Data_Collection_Platform';
+var remoteZipPath = '/var/lib/tomcat7/webapps/data-collection-platform.zip';
+var remoteProjectPath = '/var/lib/tomcat7/webapps/data-collection-platform';
 
 
 
@@ -20,14 +20,14 @@ gulp.task('cleanDist', function () {
 gulp.task('replaceServerUrl', function () {
     var dirPath = distPath;
     return gulp.src(dirPath + 'bundle.js')
-        .pipe(replace(/var SERVER_URL =(.+)/g, 'var SERVER_URL = "/Data_Collection_Platform";'))
+        .pipe(replace(/var FOLDER_NAME =(.+)/g, 'var FOLDER_NAME = "/data-collection-platform";'))
         .pipe(gulp.dest(dirPath));
 });
 
 
 gulp.task('zipDist', function () {
     return gulp.src(distPath + '**')
-        .pipe(zip('Data_Collection_Platform.zip'))
+        .pipe(zip('data-collection-platform.zip'))
         .pipe(gulp.dest('dist'));
 });
 
@@ -37,7 +37,7 @@ gulp.task('deleteRemoteFiles', function () {
 });
 
 gulp.task('uploadZip', function () {
-    return gulp.src('dist/Data_Collection_Platform.zip')
+    return gulp.src('dist/data-collection-platform.zip')
         .pipe(ssh.sftp('write', remoteZipPath));
 });
 

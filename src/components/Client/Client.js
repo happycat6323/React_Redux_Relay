@@ -5,14 +5,14 @@ export default class Client extends React.Component {
     constructor(props) {
         super(props)
         this.props.subscribe()
-        this.state = { message: ""}
         this.props.getPlot()
     }
     componentWillUnmount(){
         this.props.subscribeObject.cancel()
+        this.props.handlePushMessageChange("")
     }
     handleMessageChange(e) {
-        this.setState({message: e.target.value})
+        this.props.handlePushMessageChange(e.target.value)
     }
 
     render() {
@@ -47,10 +47,10 @@ export default class Client extends React.Component {
                             <br/>
                             <form>
                                 <FormGroup>
-                                    <FormControl componentClass="textarea" placeholder="訊息" value={this.state.message} onChange={this.handleMessageChange.bind(this)} />
+                                    <FormControl componentClass="textarea" placeholder="訊息" value={this.props.pushMessageChange} onChange={this.handleMessageChange.bind(this)} />
                                 </FormGroup>
                             </form>
-                            <Button bsStyle="primary" onClick={this.props.publish.bind(this, this.state.message)} className="pull-right">Sent</Button>
+                            <Button bsStyle="primary" onClick={this.props.publish.bind(this, this.props.pushMessageChange)} className="pull-right">Sent</Button>
                             <br/><br/><br/>
                             {plotButton}
                             <br/><br/>
@@ -70,10 +70,12 @@ export default class Client extends React.Component {
 Client.propTypes = {
     pushMessage: PropTypes.any.isRequired,
     subscribeObject: PropTypes.any.isRequired,
+    pushMessageChange: PropTypes.any.isRequired,
     currentPlot: PropTypes.any.isRequired,
 
     subscribe: PropTypes.func.isRequired,
     publish: PropTypes.func.isRequired,
+    handlePushMessageChange: PropTypes.func.isRequired,
     getPlot: PropTypes.func.isRequired,
     setCurrentPlot: PropTypes.func.isRequired
 }

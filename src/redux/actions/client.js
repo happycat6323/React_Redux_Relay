@@ -29,6 +29,13 @@ export const handlePushMessage = (message, time) => {
     }
 }
 
+export const handlePushMessageChange = (message) => {
+    return {
+        type: 'HANDLE_PUSH_MESSAGE_CHANGE',
+        message
+    }
+}
+
 export function publish  (channel, message)  {
     return (dispatch, state) => {
         state().client.client.publish("/" + channel, message)

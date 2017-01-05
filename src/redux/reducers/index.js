@@ -5,7 +5,7 @@ import {activityInfo} from './home.js'
 import {createModal, pet} from './pet.js'
 import commonModal from './commonModal.js'
 import {entityInfo, entityPostState, entities, selectSentence} from './entityDetection.js'
-import {client, subscribeObject, pushMessage, plots, currentPlot} from './client.js'
+import {client, subscribeObject, pushMessage, pushMessageChange, plots, currentPlot} from './client.js'
 
 export default combineReducers({
     home: combineReducers({
@@ -25,6 +25,7 @@ export default combineReducers({
         client,
         subscribeObject,
         pushMessage,
+        pushMessageChange,
         plots,
         currentPlot
     }),
