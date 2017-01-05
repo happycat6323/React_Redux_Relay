@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import ReactDOM from 'react-dom'
 import {Button, Grid, Row, Col, Well, FormGroup, FormControl, Label} from 'react-bootstrap'
 
 import './Client.css'
@@ -8,6 +9,10 @@ export default class Client extends React.Component {
         super(props)
         this.props.subscribe()
         this.props.getPlot()
+    }
+    componentDidUpdate() {
+        let element  = ReactDOM.findDOMNode(this.refs.pushMessageWell)
+        element.scrollTop = element.scrollHeight
     }
     componentWillUnmount(){
         this.props.subscribeObject.cancel()
@@ -40,7 +45,7 @@ export default class Client extends React.Component {
                         <Col md={6} xs={6}>
                             <h3 className="client-title">聊天室</h3>
                             <br/>
-                            <Well className="client-push-message-well">
+                            <Well className="client-push-message-well" ref="pushMessageWell">
                                 {pushMessage}
                             </Well>
                         </Col>

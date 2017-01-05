@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import ReactDOM from 'react-dom'
 import {Button, Grid, Row, Col, Well, FormGroup, FormControl, Label} from 'react-bootstrap'
 
 import './EntityDetection.css'
@@ -7,6 +8,10 @@ export default class ChatRoom extends React.Component {
     constructor(props) {
         super(props)
         this.props.subscribe()
+    }
+    componentDidUpdate() {
+        let element  = ReactDOM.findDOMNode(this.refs.pushMessageWell)
+        element.scrollTop = element.scrollHeight
     }
     componentWillUnmount(){
         this.props.subscribeObject.cancel()
@@ -39,7 +44,7 @@ export default class ChatRoom extends React.Component {
                         <Col md={6} xs={6}>
                             <h3 className="entity-detection-title">聊天室</h3>
                             <br/>
-                            <Well className="entity-detection-push-message-well">
+                            <Well className="entity-detection-push-message-well" ref="pushMessageWell">
                                 {pushMessage}
                             </Well>
                         </Col>
