@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import {getEntityInfo, postEntityToWit, setEntities} from '../redux/actions/entityDetection.js'
 import EntityDetection from '../components/EntityDetection/EntityDetection.js'
-import {subscribe, publish} from '../redux/actions/client.js'
+import {subscribe, publish, handlePushMessageChange} from '../redux/actions/client.js'
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => {
         entities: state.entityDetection.entities,
         pushMessage: state.client.pushMessage,
         subscribeObject: state.client.subscribeObject,
+        pushMessageChange: state.client.pushMessageChange,
         selectSentence: state.entityDetection.selectSentence
     }
 }
@@ -35,6 +36,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 role: "robot"
             }
             dispatch(publish("cat", newMessage))
+        },
+        handlePushMessageChange: (message) =>{
+            dispatch(handlePushMessageChange(message))
         }
     }
 }

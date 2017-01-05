@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch'
-const SERVER_URL = 'http://localhost:3000';
+const BACKEND_SERVER_URL = 'http://localhost:3000';
 
 function setEntityInfo(text) {
     return {
@@ -25,7 +25,7 @@ function setSelectSentence(sentence) {
 export function getEntityInfo(sentence)  {
     return function (dispatch) {
         let myInit = { method: 'GET'};
-        return fetch(SERVER_URL + '/v1/entities?sentence=' + sentence, myInit)
+        return fetch(BACKEND_SERVER_URL + '/v1/entities?sentence=' + sentence, myInit)
             .then(response => {
               response.json().then(data => {
                 console.log(data)
@@ -47,7 +47,7 @@ export function postEntityToWit(entities)  {
           },
           body: JSON.stringify({"entities": entities})
         }
-        return fetch(SERVER_URL + '/v1/entities', myInit)
+        return fetch(BACKEND_SERVER_URL + '/v1/entities', myInit)
             .then(response => {
               response.json().then(data => {
                 console.log(data)

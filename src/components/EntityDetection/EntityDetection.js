@@ -39,6 +39,7 @@ export default class EntityDetection extends React.Component {
       entityPostState: PropTypes.string.isRequired,
       pushMessage: PropTypes.any.isRequired,
       subscribeObject: PropTypes.any.isRequired,
+      pushMessageChange: PropTypes.any.isRequired,
       selectSentence: PropTypes.string.isRequired,
       entities: PropTypes.any.isRequired,
 
@@ -46,5 +47,6 @@ export default class EntityDetection extends React.Component {
       postEntityToWit: PropTypes.func.isRequired,
       setEntities: PropTypes.func.isRequired,
       subscribe: PropTypes.func.isRequired,
-      publish: PropTypes.func.isRequired
+      publish: PropTypes.func.isRequired,
+      handlePushMessageChange: PropTypes.func.isRequired
     }
