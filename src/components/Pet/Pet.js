@@ -3,6 +3,7 @@ import {Table, Label, Button} from 'react-bootstrap'
 import Icon from 'react-fa'
 
 import CreateModal from "../../components/Pet/CreateModal.js"
+import './Pet.css'
 
 export default class Subpage extends React.Component {
     constructor(props) {
@@ -37,7 +38,7 @@ export default class Subpage extends React.Component {
         return (
             <div>
                 <h1>生死簿</h1>
-                <div className="pull-right" style={{marginBottom:"20px"}}>
+                <div className="pull-right pet-create-button">
                     <Button bsStyle="primary" onClick={this.props.openCreateModal}>+ 新增</Button>
                 </div>
                 <Table striped bordered>

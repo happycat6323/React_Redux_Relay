@@ -3,6 +3,7 @@ import {browserHistory, Link} from 'react-router'
 import {Navbar, Nav, NavItem} from 'react-bootstrap'
 
 import '../public/css/main.css'
+import './App.css'
 
 let FOLDER_NAME = "";
 
@@ -18,7 +19,7 @@ export default class App extends React.Component {
     render(){
         return (
             <div>
-                <Navbar inverse style={{borderRadius:"0"}} onSelect={this.handleSelect.bind(this)}>
+                <Navbar inverse className="app-navbar" onSelect={this.handleSelect.bind(this)}>
                     <Navbar.Header>
                         <Navbar.Brand>
                             <Link to={FOLDER_NAME + "/"}>Data_Collection_Platform</Link>
@@ -31,7 +32,7 @@ export default class App extends React.Component {
                         <NavItem eventKey={2}>Client</NavItem>
                     </Nav>
                 </Navbar>
-                <div style={{margin: "80px"}}>
+                <div className="app-children-margin">
                     {this.props.children}
                 </div>
             </div>
