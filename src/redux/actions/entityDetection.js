@@ -31,7 +31,7 @@ export function setEntities(entities) {
 export function getEntityInfo(sentence)  {
   return function (dispatch) {
     let _params = {sentence: sentence}
-    ToTvHttp.get("/v1/entities", _params, (response) => {
+    ToTvHttp.get("/v1/entities", _params).then((response) => {
       dispatch(setSelectSentence(response._text))
       dispatch(setEntityInfo(response))
     })
@@ -42,7 +42,7 @@ export function postEntityToWit(entities)  {
   return function (dispatch) {
     dispatch(setPostEntityState("loading"))
     let _params = {"entities": entities}
-    ToTvHttp.post("/v1/entities", _params, (response) => {
+    ToTvHttp.post("/v1/entities", _params).then((response) => {
       console.log(response)
       dispatch(setEntityInfo({}))
       dispatch(setPostEntityState(response.stat))
