@@ -28,7 +28,7 @@ export default class CreateModal extends React.Component {
                     <Modal.Title>新增</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form style={{margin: "30px"}}>
+                    <form className="create-modal-form">
                         <FormGroup>
                             <FormControl type="text" placeholder="名稱" value={this.state.name} onChange={this.handleNameChange.bind(this)} />
                         </FormGroup>

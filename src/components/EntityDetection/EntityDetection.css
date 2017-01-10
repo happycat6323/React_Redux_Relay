@@ -1,0 +1,15 @@
+.entity-detection-padding-right {
+    padding-right: 80px;
+}
+
+.entity-detection-title {
+    text-align: center;
+    font-weight: 900;
+}
+
+.entity-detection-push-message-well {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    overflow: auto;
+    height: 300px;
+}

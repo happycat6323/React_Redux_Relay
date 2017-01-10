@@ -1,0 +1,15 @@
+.client-padding-right {
+    padding-right: 80px;
+}
+
+.client-title {
+    text-align: center;
+    font-weight: 900;
+}
+
+.client-push-message-well {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    overflow: auto;
+    height: 300px;
+}
