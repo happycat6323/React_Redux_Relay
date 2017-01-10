@@ -101,10 +101,10 @@ export default class EntityInfo extends React.Component {
         })}
         <FormGroup>
           <Col smOffset={10} sm={2}>
-            <Button onClick={this.props.postEntityToWit.bind(this, this.props.entities)}
-              disabled={this.props.entityPostState === 'loading'}>
+            <Button onClick={this.props.postEntityInfo.bind(this, this.props.entities)}
+              disabled={this.props.postEntityStatus === 'loading'}>
               修改至wit.ai
-              {this.props.entityPostState === 'loading' ? <Icon spin name="spinner" /> : ""}
+              {this.props.postEntityStatus === 'loading' ? <Icon spin name="spinner" /> : ""}
             </Button>
           </Col>
         </FormGroup>

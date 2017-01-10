@@ -38,7 +38,7 @@ export function getEntityInfo(sentence)  {
   }
 }
 
-export function postEntityToWit(entities)  {
+export function postEntityInfo(entities)  {
   return function (dispatch) {
     dispatch(setPostEntityState("loading"))
     let _params = {"entities": entities}
