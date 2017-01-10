@@ -35,17 +35,21 @@ export default class EntityDetection extends React.Component {
     }
 
     EntityDetection.propTypes = {
+      //entityDetection
       entityInfo: PropTypes.any.isRequired,
       entities: PropTypes.any.isRequired, //reconstruct entityInfo
       postEntityStatus: PropTypes.string.isRequired,
       selectSentence: PropTypes.string.isRequired,
+
       getEntityInfo: PropTypes.func.isRequired,
       postEntityInfo: PropTypes.func.isRequired,
       setEntities: PropTypes.func.isRequired,
-      //from Client
+
+      //client
       pushMessage: PropTypes.any.isRequired,
       subscribeObject: PropTypes.any.isRequired,
       pushMessageChange: PropTypes.any.isRequired,
+
       subscribe: PropTypes.func.isRequired,
       publish: PropTypes.func.isRequired,
       handlePushMessageChange: PropTypes.func.isRequired

@@ -19,6 +19,8 @@ export default class Home extends React.Component {
 }
 
 Home.propTypes = {
+    //home
     activityInfo: PropTypes.any.isRequired,
+
     getActivityInfo: PropTypes.func.isRequired
 }

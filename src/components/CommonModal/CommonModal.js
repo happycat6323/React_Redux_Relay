@@ -25,6 +25,8 @@ export default class CommonModal extends React.Component {
 }
 
 CommonModal.propTypes = {
+    //commonModal
     commonModal: PropTypes.any.isRequired,
+
     closeModal: PropTypes.func.isRequired
 }

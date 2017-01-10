@@ -83,8 +83,10 @@ export default class Subpage extends React.Component {
 }
 
 Subpage.propTypes = {
+    //pet
     createModal: PropTypes.any.isRequired,
     pet: PropTypes.any.isRequired,
+
     openCreateModal: PropTypes.func.isRequired,
     closeCreateModal: PropTypes.func.isRequired,
     createPet: PropTypes.func.isRequired

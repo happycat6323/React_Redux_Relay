@@ -75,9 +75,11 @@ export default class Client extends React.Component {
 }
 
 Client.propTypes = {
+    //client
     pushMessage: PropTypes.any.isRequired,
     subscribeObject: PropTypes.any.isRequired,
     pushMessageChange: PropTypes.any.isRequired,
+    plots: PropTypes.any.isRequired,
     currentPlot: PropTypes.any.isRequired,
 
     subscribe: PropTypes.func.isRequired,
