@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
 
-import {getEntityInfo, postEntityToWit, setEntities} from '../redux/actions/entityDetection.js'
+import {getEntityInfo, postEntityInfo, setEntities} from '../redux/actions/entityDetection.js'
 import EntityDetection from '../components/EntityDetection/EntityDetection.js'
 import {subscribe, publish, handlePushMessageChange} from '../redux/actions/client.js'
 
 const mapStateToProps = (state, ownProps) => {
     return {
         entityInfo: state.entityDetection.entityInfo,
-        entityPostState: state.entityDetection.entityPostState,
+        postEntityStatus: state.entityDetection.postEntityStatus,
         entities: state.entityDetection.entities,
         pushMessage: state.client.pushMessage,
         subscribeObject: state.client.subscribeObject,
@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         getEntityInfo: (sentence) => {
             dispatch(getEntityInfo(sentence))
         },
-        postEntityToWit: (entities) => {
-            dispatch(postEntityToWit(entities))
+        postEntityInfo: (entities) => {
+            dispatch(postEntityInfo(entities))
         },
         setEntities: (entities) => {
           dispatch(setEntities(entities))

@@ -8,7 +8,7 @@ export const entityInfo = (state = [], action) => {
     }
 }
 
-export const entityPostState = (state = "", action) => {
+export const postEntityStatus = (state = "", action) => {
     switch (action.type) {
         case 'SET_POST_ENTITY_STATE':
             return action.state

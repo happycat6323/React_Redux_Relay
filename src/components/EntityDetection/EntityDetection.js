@@ -25,7 +25,7 @@ export default class EntityDetection extends React.Component {
               </FormGroup>
               <FormGroup>
                 <Col smOffset={2} sm={8}>
-                  {this.props.entityPostState === 'ok' ? "設定成功" : ""}
+                  {this.props.postEntityStatus === 'ok' ? "設定成功" : ""}
                 </Col>
               </FormGroup>
             </Form>
@@ -36,16 +36,16 @@ export default class EntityDetection extends React.Component {
 
     EntityDetection.propTypes = {
       entityInfo: PropTypes.any.isRequired,
-      entityPostState: PropTypes.string.isRequired,
+      entities: PropTypes.any.isRequired, //reconstruct entityInfo
+      postEntityStatus: PropTypes.string.isRequired,
+      selectSentence: PropTypes.string.isRequired,
+      getEntityInfo: PropTypes.func.isRequired,
+      postEntityInfo: PropTypes.func.isRequired,
+      setEntities: PropTypes.func.isRequired,
+      //from Client
       pushMessage: PropTypes.any.isRequired,
       subscribeObject: PropTypes.any.isRequired,
       pushMessageChange: PropTypes.any.isRequired,
-      selectSentence: PropTypes.string.isRequired,
-      entities: PropTypes.any.isRequired,
-
-      getEntityInfo: PropTypes.func.isRequired,
-      postEntityToWit: PropTypes.func.isRequired,
-      setEntities: PropTypes.func.isRequired,
       subscribe: PropTypes.func.isRequired,
       publish: PropTypes.func.isRequired,
       handlePushMessageChange: PropTypes.func.isRequired
