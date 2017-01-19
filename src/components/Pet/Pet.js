@@ -76,7 +76,7 @@ export default class Subpage extends React.Component {
                     {pets}
                     </tbody>
                 </Table>
-                <CreateModal createModal={this.props.createModal} closeCreateModal={this.props.closeCreateModal} createPet={this.props.createPet}/>
+                <CreateModal {...this.props}/>
             </div>
         )
     }
@@ -86,8 +86,10 @@ Subpage.propTypes = {
     //pet
     createModal: PropTypes.any.isRequired,
     pet: PropTypes.any.isRequired,
+    petChange: PropTypes.any.isRequired,
 
     openCreateModal: PropTypes.func.isRequired,
     closeCreateModal: PropTypes.func.isRequired,
-    createPet: PropTypes.func.isRequired
+    createPet: PropTypes.func.isRequired,
+    handlePetChange: PropTypes.func.isRequired
 }

@@ -26,6 +26,9 @@ export default class App extends React.Component {
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
+                        <NavItem eventKey={0}>Pet</NavItem>
+                    </Nav>
+                    <Nav>
                         <NavItem eventKey={1}>Entity Detection</NavItem>
                     </Nav>
                     <Nav>

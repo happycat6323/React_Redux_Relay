@@ -5,12 +5,16 @@ export const openCreateModal = (open) => {
     }
 }
 
-export const createPet = (name, status, description, species) => {
+export const createPet = (pet) => {
     return {
         type: 'CREATE_PET',
-        name,
-        status,
-        description,
-        species
+        pet
+    }
+}
+
+export const handlePetChange = (petChange) => {
+    return {
+        type: 'HANDLE_PET_CHANGE',
+        petChange
     }
 }
