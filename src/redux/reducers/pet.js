@@ -23,7 +23,8 @@ export const pet = (state = [], action) => {
 export const petChange = (state = {}, action) => {
     switch (action.type) {
         case 'HANDLE_PET_CHANGE':
-            return action.petChange
+            const petChange = Object.assign({},action.petChange)
+            return petChange
         default:
             return state
     }

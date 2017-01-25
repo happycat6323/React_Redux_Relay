@@ -1,5 +1,9 @@
 import React, { PropTypes } from 'react'
+import moment from 'moment'
+import DatePicker from 'react-datepicker'
 import {Button, Modal, FormGroup, FormControl, Radio} from 'react-bootstrap'
+
+import 'react-datepicker/dist/react-datepicker.css'
 
 export default class CreateModal extends React.Component {
     constructor(props) {
@@ -7,7 +11,12 @@ export default class CreateModal extends React.Component {
     }
     handlePetChange(type, e){
         let petChange = this.props.petChange
-        petChange[type] = e.target.value
+        if(type === "startDate" || type === "endDate"){
+            petChange[type] = e
+        }
+        else{
+            petChange[type] = e.target.value
+        }
         this.props.handlePetChange(petChange)
     }
 
@@ -37,6 +46,9 @@ export default class CreateModal extends React.Component {
                         <FormGroup>
                             <FormControl type="text" placeholder="種類" value={this.props.petChange.species} onChange={this.handlePetChange.bind(this, "species")} />
                         </FormGroup>
+                        <DatePicker className="form-control" dateFormat="YYYY-MM-DD" placeholderText="登入時間" selected={this.props.petChange.startDate} onChange={this.handlePetChange.bind(this, "startDate")} />
+                        &nbsp;
+                        <DatePicker className="form-control" dateFormat="YYYY-MM-DD" placeholderText="死亡時間" selected={this.props.petChange.endDate} onChange={this.handlePetChange.bind(this, "endDate")} minDate={this.props.petChange.startDate} />
                     </form>
                 </Modal.Body>
                 <Modal.Footer>

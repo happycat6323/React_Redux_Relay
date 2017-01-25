@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import {Table, Label, Button} from 'react-bootstrap'
 import Icon from 'react-fa'
+import moment from 'moment'
 
 import CreateModal from "../../components/Pet/CreateModal.js"
 import './Pet.css'
@@ -11,17 +12,17 @@ export default class Subpage extends React.Component {
     }
 
     render() {
-        let pets = this.props.pet.map( (pet) => {
+        let pets = this.props.pet.map( (pet,index) => {
             return(
-                <tr>
+                <tr key={index}>
                     <td>{pet.name}</td>
                     <td>
                         <Label bsStyle={pet.status === "存活" ? "success" : "danger"}>{pet.status}</Label>
                     </td>
                     <td>{pet.description}</td>
                     <td>{pet.species}</td>
-                    <td>2016-12-12</td>
-                    <td>2016-12-19</td>
+                    <td>{moment(pet.startDate).format('YYYY-MM-DD')}</td>
+                    <td>{moment(pet.endDate).format('YYYY-MM-DD')}</td>
                     <td>
                         <Button bsStyle="info" bsSize="xsmall">
                             <Icon name="pencil"/>
