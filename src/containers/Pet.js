@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import Pet from '../components/Pet/Pet.js'
-import {openCreateModal, createPet, handlePetChange} from '../redux/actions/pet.js'
+import {openCreateModal, validatePet, handlePetChange} from '../redux/actions/pet.js'
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -19,10 +19,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         closeCreateModal: () => {
             dispatch(openCreateModal(false))
         },
-        createPet: (pet) => {
-            dispatch(createPet(pet))
-            dispatch(handlePetChange({}))
-            dispatch(openCreateModal(false))
+        validatePet: () => {
+            dispatch(validatePet())
         },
         handlePetChange: (petChange) => {
             dispatch(handlePetChange(petChange))

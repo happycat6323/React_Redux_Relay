@@ -21,8 +21,8 @@ export default class Subpage extends React.Component {
                     </td>
                     <td>{pet.description}</td>
                     <td>{pet.species}</td>
-                    <td>{moment(pet.startDate).format('YYYY-MM-DD')}</td>
-                    <td>{moment(pet.endDate).format('YYYY-MM-DD')}</td>
+                    <td>{pet.startDate ? moment(pet.startDate).format('YYYY-MM-DD') : ""}</td>
+                    <td>{pet.endDate ? moment(pet.endDate).format('YYYY-MM-DD') : ""}</td>
                     <td>
                         <Button bsStyle="info" bsSize="xsmall">
                             <Icon name="pencil"/>
@@ -91,6 +91,6 @@ Subpage.propTypes = {
 
     openCreateModal: PropTypes.func.isRequired,
     closeCreateModal: PropTypes.func.isRequired,
-    createPet: PropTypes.func.isRequired,
+    validatePet: PropTypes.func.isRequired,
     handlePetChange: PropTypes.func.isRequired
 }

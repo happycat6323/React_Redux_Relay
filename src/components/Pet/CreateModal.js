@@ -28,10 +28,10 @@ export default class CreateModal extends React.Component {
                 </Modal.Header>
                 <Modal.Body>
                     <form className="create-modal-form">
-                        <FormGroup>
+                        <FormGroup validationState={this.props.petChange.validationName}>
                             <FormControl type="text" placeholder="名稱" value={this.props.petChange.name} onChange={this.handlePetChange.bind(this, "name")} />
                         </FormGroup>
-                        <FormGroup onChange={this.handlePetChange.bind(this, "status")}>
+                        <FormGroup onChange={this.handlePetChange.bind(this, "status")} validationState={this.props.petChange.validationStatus}>
                             <Radio inline value="存活" name="status">
                                 存活
                             </Radio>
@@ -43,7 +43,7 @@ export default class CreateModal extends React.Component {
                         <FormGroup>
                             <FormControl componentClass="textarea" placeholder="描述" value={this.props.petChange.description} onChange={this.handlePetChange.bind(this, "description")} />
                         </FormGroup>
-                        <FormGroup>
+                        <FormGroup validationState={this.props.petChange.validationSpecies}>
                             <FormControl type="text" placeholder="種類" value={this.props.petChange.species} onChange={this.handlePetChange.bind(this, "species")} />
                         </FormGroup>
                         <DatePicker className="form-control" dateFormat="YYYY-MM-DD" placeholderText="登入時間" selected={this.props.petChange.startDate} onChange={this.handlePetChange.bind(this, "startDate")} />
@@ -53,7 +53,7 @@ export default class CreateModal extends React.Component {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={this.props.closeCreateModal}>取消</Button>
-                    <Button bsStyle="primary" onClick={this.props.createPet.bind(this, this.props.petChange)}>確定</Button>
+                    <Button bsStyle="primary" onClick={this.props.validatePet.bind(this)}>確定</Button>
                 </Modal.Footer>
             </Modal>
         )
