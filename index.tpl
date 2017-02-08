@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Data_Collection_Platform</title>
+    <title>react-redux-relay-example</title>
   </head>
   <body>
     <div id="root">

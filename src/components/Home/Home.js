@@ -12,7 +12,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <div>
-                <h1>資料收集平台</h1>
+                <h1>react-redux-relay-example</h1>
             </div>
         )
     }

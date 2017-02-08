@@ -6,7 +6,7 @@ import moment from 'moment'
 import CreateModal from "../../components/Pet/CreateModal.js"
 import './Pet.css'
 
-export default class Subpage extends React.Component {
+export default class Pet extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -83,7 +83,7 @@ export default class Subpage extends React.Component {
     }
 }
 
-Subpage.propTypes = {
+Pet.propTypes = {
     //pet
     createModal: PropTypes.any.isRequired,
     pet: PropTypes.any.isRequired,

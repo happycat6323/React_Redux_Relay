@@ -5,12 +5,12 @@ import {Navbar, Nav, NavItem} from 'react-bootstrap'
 import '../public/css/main.css'
 import './App.css'
 
-let FOLDER_NAME = "";
+let FOLDER_NAME = ""
 
 export default class App extends React.Component {
     constructor(props) {
         super(props)
-        this.menuItems = ['/pet', '/entityDetection', '/client']
+        this.menuItems = ['/login', '/entityDetection', '/client']
     }
     handleSelect(selectedKey){
         browserHistory.push(FOLDER_NAME + this.menuItems[selectedKey])
@@ -22,7 +22,7 @@ export default class App extends React.Component {
                 <Navbar inverse className="app-navbar" onSelect={this.handleSelect.bind(this)}>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <Link to={FOLDER_NAME + "/"}>Data_Collection_Platform</Link>
+                            <Link to={FOLDER_NAME + "/"}>react-redux-relay-example</Link>
                         </Navbar.Brand>
                     </Navbar.Header>
                     <Nav>
