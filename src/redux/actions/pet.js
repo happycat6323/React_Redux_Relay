@@ -1,3 +1,5 @@
+import firebase from '../../utils/firebase.js'
+
 export const openCreateModal = (open) => {
     return {
         type: 'OPEN_CREATE_MODAL',
@@ -33,6 +35,7 @@ export function validatePet () {
 
         if(validation){
             dispatch(createPet(state().pet.petChange))
+            dispatch(setPetToFirebase())
             dispatch(handlePetChange({}))
             dispatch(openCreateModal(false))
         }
@@ -53,5 +56,11 @@ export const handlePetChange = (petChange) => {
     return {
         type: 'HANDLE_PET_CHANGE',
         petChange
+    }
+}
+
+export function setPetToFirebase () {
+    return (dispatch, state) => {
+        firebase.database().ref('/' + state().login.userId).push(state().pet.petChange)
     }
 }

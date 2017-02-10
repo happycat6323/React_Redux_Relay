@@ -56,7 +56,7 @@ export default class Pet extends React.Component {
                     </thead>
                     <tbody>
                     <tr>
-                        <td>胖J</td>
+                        <td>胖J(範例)</td>
                         <td>
                             <Label bsStyle="danger">陣亡</Label>
                         </td>

@@ -1,6 +1,8 @@
 import {browserHistory} from 'react-router'
 import firebase from '../../utils/firebase.js'
 
+import {createPet} from './pet.js'
+
 let FOLDER_NAME = ""
 
 export const handleLoginChange = (loginChange) => {
@@ -10,14 +12,21 @@ export const handleLoginChange = (loginChange) => {
     }
 }
 
+export const setUserId = (userId) => {
+    return {
+        type: 'SET_USER_ID',
+        userId
+    }
+}
+
 export function createUser () {
     return (dispatch, state) => {
         firebase.auth().createUserWithEmailAndPassword(state().login.loginChange.email,state().login.loginChange.password)
             .then(result => {
                 var userId = firebase.auth().currentUser.uid
                 console.log("userId : " + userId)
+                dispatch(setUserId(userId))
                 browserHistory.push(FOLDER_NAME + '/pet')
-                //firebase.database().ref('/' + userId).set({name:'dog'})
             })
         .catch(error => {
                 console.log(error)
@@ -31,12 +40,15 @@ export function loginUser () {
             .then(result => {
                 var userId = firebase.auth().currentUser.uid
                 console.log("userId : " + userId)
+                dispatch(setUserId(userId))
                 browserHistory.push(FOLDER_NAME + '/pet')
-                //firebase.database().ref('/' + userId).once('value')
-                //    .then(items => {
-                //        console.log("dddddddddddddddddddddddddddddddd")
-                //        console.log(items.val())
-                //    })
+                firebase.database().ref('/' + userId).once('value')
+                    .then( items => {
+                        items.forEach(item => {
+                            console.log(item.val())
+                            dispatch(createPet(item.val()))
+                        })
+                    })
             })
             .catch(error => {
                 console.log(error)
