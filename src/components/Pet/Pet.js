@@ -12,7 +12,7 @@ export default class Pet extends React.Component {
     }
 
     render() {
-        let pets = this.props.pet.map( (pet,index) => {
+        let pets = this.props.pet.map((pet, index) => {
             return(
                 <tr key={index}>
                     <td>{pet.name}</td>
@@ -21,10 +21,10 @@ export default class Pet extends React.Component {
                     </td>
                     <td>{pet.description}</td>
                     <td>{pet.species}</td>
-                    <td>{pet.startDate ? moment(pet.startDate).format('YYYY-MM-DD') : ""}</td>
-                    <td>{pet.endDate ? moment(pet.endDate).format('YYYY-MM-DD') : ""}</td>
+                    <td>{pet.startDate}</td>
+                    <td>{pet.endDate}</td>
                     <td>
-                        <Button bsStyle="info" bsSize="xsmall">
+                        <Button bsStyle="info" bsSize="xsmall" onClick={this.props.editPet.bind(this, index, pet)}>
                             <Icon name="pencil"/>
                         </Button>
                         &nbsp;
@@ -92,5 +92,6 @@ Pet.propTypes = {
     openCreateModal: PropTypes.func.isRequired,
     closeCreateModal: PropTypes.func.isRequired,
     validatePet: PropTypes.func.isRequired,
-    handlePetChange: PropTypes.func.isRequired
+    handlePetChange: PropTypes.func.isRequired,
+    editPet: PropTypes.func.isRequired
 }

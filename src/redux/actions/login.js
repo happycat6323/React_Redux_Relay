@@ -41,14 +41,13 @@ export function loginUser () {
                 var userId = firebase.auth().currentUser.uid
                 console.log("userId : " + userId)
                 dispatch(setUserId(userId))
-                browserHistory.push(FOLDER_NAME + '/pet')
                 firebase.database().ref('/' + userId).once('value')
                     .then( items => {
                         items.forEach(item => {
-                            console.log(item.val())
-                            dispatch(createPet(item.val()))
+                            dispatch(createPet(item.val(), item.key))
                         })
                     })
+                browserHistory.push(FOLDER_NAME + '/pet')
             })
             .catch(error => {
                 console.log(error)

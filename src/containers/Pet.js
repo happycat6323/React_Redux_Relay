@@ -14,16 +14,22 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return{
         openCreateModal: () => {
-            dispatch(openCreateModal(true))
+            dispatch(openCreateModal(true, "新增"))
         },
         closeCreateModal: () => {
-            dispatch(openCreateModal(false))
+            dispatch(openCreateModal(false, ""))
+            dispatch(handlePetChange({}))
         },
         validatePet: () => {
             dispatch(validatePet())
         },
         handlePetChange: (petChange) => {
             dispatch(handlePetChange(petChange))
+        },
+        editPet: (index, pet) => {
+            dispatch(openCreateModal(true, "編輯"))
+            const editPet = Object.assign({}, pet, {index : index})
+            dispatch(handlePetChange(editPet))
         }
     }
 }

@@ -12,7 +12,7 @@ export default class CreateModal extends React.Component {
     handlePetChange(type, e){
         let petChange = this.props.petChange
         if(type === "startDate" || type === "endDate"){
-            petChange[type] = e
+            petChange[type] = e ? moment(e).format('YYYY-MM-DD') : ""
         }
         else{
             petChange[type] = e.target.value
@@ -22,9 +22,9 @@ export default class CreateModal extends React.Component {
 
     render() {
         return (
-            <Modal show={this.props.createModal} onHide={this.props.closeCreateModal} animation={false}>
+            <Modal show={this.props.createModal.open} onHide={this.props.closeCreateModal} animation={false}>
                 <Modal.Header closeButton>
-                    <Modal.Title>新增</Modal.Title>
+                    <Modal.Title>{this.props.createModal.title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <form className="create-modal-form">
@@ -32,11 +32,11 @@ export default class CreateModal extends React.Component {
                             <FormControl type="text" placeholder="名稱" value={this.props.petChange.name} onChange={this.handlePetChange.bind(this, "name")} />
                         </FormGroup>
                         <FormGroup onChange={this.handlePetChange.bind(this, "status")} validationState={this.props.petChange.validationStatus}>
-                            <Radio inline value="存活" name="status">
+                            <Radio inline value="存活" name="status" defaultChecked={this.props.petChange.status === "存活" ? "checked" : ""}>
                                 存活
                             </Radio>
                             &nbsp;
-                            <Radio inline value="陣亡" name="status">
+                            <Radio inline value="陣亡" name="status" defaultChecked={this.props.petChange.status === "陣亡" ? "checked" : ""}>
                                 陣亡
                             </Radio>
                         </FormGroup>
@@ -46,9 +46,9 @@ export default class CreateModal extends React.Component {
                         <FormGroup validationState={this.props.petChange.validationSpecies}>
                             <FormControl type="text" placeholder="種類" value={this.props.petChange.species} onChange={this.handlePetChange.bind(this, "species")} />
                         </FormGroup>
-                        <DatePicker className="form-control" dateFormat="YYYY-MM-DD" placeholderText="登入時間" selected={this.props.petChange.startDate} onChange={this.handlePetChange.bind(this, "startDate")} />
+                        <DatePicker className="form-control" dateFormat="YYYY-MM-DD" placeholderText="登入時間" selected={this.props.petChange.startDate ? moment(this.props.petChange.startDate) : ""} onChange={this.handlePetChange.bind(this, "startDate")} />
                         &nbsp;
-                        <DatePicker className="form-control" dateFormat="YYYY-MM-DD" placeholderText="死亡時間" selected={this.props.petChange.endDate} onChange={this.handlePetChange.bind(this, "endDate")} minDate={this.props.petChange.startDate} />
+                        <DatePicker className="form-control" dateFormat="YYYY-MM-DD" placeholderText="死亡時間" selected={this.props.petChange.endDate ? moment(this.props.petChange.endDate) : ""} onChange={this.handlePetChange.bind(this, "endDate")} minDate={moment(this.props.petChange.startDate)} />
                     </form>
                 </Modal.Body>
                 <Modal.Footer>

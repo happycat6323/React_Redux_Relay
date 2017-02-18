@@ -1,9 +1,10 @@
 import firebase from '../../utils/firebase.js'
 
-export const openCreateModal = (open) => {
+export const openCreateModal = (open, title) => {
     return {
         type: 'OPEN_CREATE_MODAL',
-        open
+        open,
+        title
     }
 }
 
@@ -34,8 +35,12 @@ export function validatePet () {
         }
 
         if(validation){
-            dispatch(createPet(state().pet.petChange))
-            dispatch(setPetToFirebase())
+            if(state().pet.createModal.title === "新增"){
+                dispatch(setPetToFirebase())
+            }
+            else if(state().pet.createModal.title === "編輯"){
+                dispatch(updatePetToFirebase())
+            }
             dispatch(handlePetChange({}))
             dispatch(openCreateModal(false))
         }
@@ -45,10 +50,11 @@ export function validatePet () {
     }
 }
 
-export const createPet = (pet) => {
+export const createPet = (pet, postKey) => {
     return {
         type: 'CREATE_PET',
-        pet
+        pet,
+        postKey
     }
 }
 
@@ -61,6 +67,26 @@ export const handlePetChange = (petChange) => {
 
 export function setPetToFirebase () {
     return (dispatch, state) => {
-        firebase.database().ref('/' + state().login.userId).push(state().pet.petChange)
+        let postKey = firebase.database().ref('/' + state().login.userId).push().key
+        firebase.database().ref('/' + state().login.userId).child(postKey).set(state().pet.petChange)
+        dispatch(createPet(state().pet.petChange, postKey))
+    }
+}
+
+export function updatePetToFirebase () {
+    return (dispatch, state) => {
+        let petChange = state().pet.petChange
+        let pet = state().pet.pet
+        pet[state().pet.petChange.index] = petChange
+        delete petChange["index"]
+        firebase.database().ref('/' + state().login.userId).child(state().pet.petChange.postKey).update(petChange)
+        dispatch(updatePet(pet))
+    }
+}
+
+export const updatePet = (pet) => {
+    return {
+        type: 'UPDATE_PET',
+        pet
     }
 }
