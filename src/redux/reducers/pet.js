@@ -20,7 +20,7 @@ export const pet = (state = [], action) => {
         case 'UPDATE_PET':
             return action.pet
         case 'DELETE_PET':
-            return action
+            return action.pet
         default:
             return state
     }

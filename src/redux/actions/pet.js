@@ -8,6 +8,13 @@ export const openCreateModal = (open, title) => {
     }
 }
 
+export const handlePetChange = (petChange) => {
+    return {
+        type: 'HANDLE_PET_CHANGE',
+        petChange
+    }
+}
+
 export function validatePet () {
     return (dispatch, state) => {
         let petChange = state().pet.petChange
@@ -50,26 +57,19 @@ export function validatePet () {
     }
 }
 
-export const createPet = (pet, postKey) => {
-    return {
-        type: 'CREATE_PET',
-        pet,
-        postKey
-    }
-}
-
-export const handlePetChange = (petChange) => {
-    return {
-        type: 'HANDLE_PET_CHANGE',
-        petChange
-    }
-}
-
 export function setPetToFirebase () {
     return (dispatch, state) => {
         let postKey = firebase.database().ref('/' + state().login.userId).push().key
         firebase.database().ref('/' + state().login.userId).child(postKey).set(state().pet.petChange)
         dispatch(createPet(state().pet.petChange, postKey))
+    }
+}
+
+export const createPet = (pet, postKey) => {
+    return {
+        type: 'CREATE_PET',
+        pet,
+        postKey
     }
 }
 
@@ -87,6 +87,22 @@ export function updatePetToFirebase () {
 export const updatePet = (pet) => {
     return {
         type: 'UPDATE_PET',
+        pet
+    }
+}
+
+export function deletePetFromFirebase (index, pet) {
+    return (dispatch, state) => {
+        let pets = JSON.parse(JSON.stringify(state().pet.pet))
+        delete pets[index]
+        firebase.database().ref('/' + state().login.userId).child(pet.postKey).remove()
+        dispatch(deletePet(pets))
+    }
+}
+
+export const deletePet = (pet) => {
+    return {
+        type: 'DELETE_PET',
         pet
     }
 }

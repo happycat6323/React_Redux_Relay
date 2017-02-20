@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import Pet from '../components/Pet/Pet.js'
-import {openCreateModal, validatePet, handlePetChange} from '../redux/actions/pet.js'
+import {openCreateModal, validatePet, handlePetChange, deletePetFromFirebase} from '../redux/actions/pet.js'
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -30,6 +30,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(openCreateModal(true, "編輯"))
             const editPet = Object.assign({}, pet, {index : index})
             dispatch(handlePetChange(editPet))
+        },
+        deletePet: (index, pet) => {
+            dispatch(deletePetFromFirebase(index, pet))
         }
     }
 }

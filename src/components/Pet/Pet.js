@@ -28,7 +28,7 @@ export default class Pet extends React.Component {
                             <Icon name="pencil"/>
                         </Button>
                         &nbsp;
-                        <Button bsStyle="danger" bsSize="xsmall">
+                        <Button bsStyle="danger" bsSize="xsmall" onClick={this.props.deletePet.bind(this, index, pet)}>
                             <Icon name="trash-o"/>
                         </Button>
                     </td>
@@ -93,5 +93,6 @@ Pet.propTypes = {
     closeCreateModal: PropTypes.func.isRequired,
     validatePet: PropTypes.func.isRequired,
     handlePetChange: PropTypes.func.isRequired,
-    editPet: PropTypes.func.isRequired
+    editPet: PropTypes.func.isRequired,
+    deletePet: PropTypes.func.isRequired
 }
